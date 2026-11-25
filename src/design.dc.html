@@ -1,0 +1,979 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Gustavo Nunes Martins · Portfolio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap">
+<style>
+body{margin:0}
+a{color:#1e4b6e}a:hover{color:#15181d}
+button{font-family:inherit}
+.lshort{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+button:focus-visible,a:focus-visible{outline:2px solid #1e4b6e;outline-offset:3px}
+</style>
+</helmet>
+<div style="background: #fbfaf7; color: #15181d; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 16.5px; line-height: 1.6">
+
+<header style="border-bottom: 1px solid #e4e2dc">
+<div style="max-width: 1160px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="width: 34px; height: 34px; border: 1px solid #15181d; border-radius: 50%; display: grid; place-items: center; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px">G</span>
+<span style="font-size: 14px">Gustavo Nunes Martins</span>
+</div>
+<nav style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 22px; font-size: 14px">
+<a href="#systems" style="color: #4b5260; text-decoration: none; padding: 12px 0">{{ t.navSystems }}</a>
+<a href="#projects" style="color: #4b5260; text-decoration: none; padding: 12px 0">{{ t.navProjects }}</a>
+<a href="#path" style="color: #4b5260; text-decoration: none; padding: 12px 0">{{ t.navPath }}</a>
+<a href="#credentials" style="color: #4b5260; text-decoration: none; padding: 12px 0">{{ t.navCreds }}</a>
+<a href="#contact" style="color: #4b5260; text-decoration: none; padding: 12px 0">{{ t.navContact }}</a>
+<span style="display: flex; gap: 4px; border-left: 1px solid #e4e2dc; padding-left: 16px">
+<button type="button" onClick="{{ setEn }}" aria-label="English" style="min-width: 44px; height: 44px; border: 0; background: none; cursor: pointer; font-size: 13px; color: {{ enColor }}; font-weight: {{ enWeight }}">EN</button>
+<button type="button" onClick="{{ setPt }}" aria-label="Português" style="min-width: 44px; height: 44px; border: 0; background: none; cursor: pointer; font-size: 13px; color: {{ ptColor }}; font-weight: {{ ptWeight }}">PT</button>
+</span>
+</nav>
+</div>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+
+<section style="max-width: 1160px; margin: 0 auto; padding: 88px 24px 56px">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b7380">{{ t.eyebrow }}</p>
+<h1 style="margin: 20px 0 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.02; letter-spacing: -0.015em">Gustavo Nunes Martins</h1>
+<p style="margin: 28px 0 0; max-width: 40rem; font-family: 'Source Serif 4', Georgia, serif; font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.45; color: #4b5260">{{ t.heroLine }}</p>
+</section>
+
+<section id="systems" style="border-top: 1px solid #e4e2dc; border-bottom: 1px solid #e4e2dc; background: #ffffff">
+<div style="max-width: 1160px; margin: 0 auto; padding: 72px 24px 80px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 40px">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.15">{{ t.systemsTitle }}</h2>
+<p style="margin: 0; max-width: 30rem; color: #4b5260; font-size: 15px">{{ t.systemsHint }}</p>
+</div>
+
+<div style="margin-top: 48px; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: flex-start">
+
+<div style="flex: 1 1 380px; min-width: 0; max-width: 480px">
+<div style="position: relative; height: {{ stackH }}">
+<sc-for list="{{ layers }}" as="item" hint-placeholder-count="4">
+<button type="button" onClick="{{ item.pick }}" aria-pressed="{{ item.pressed }}" style="position: absolute; left: 0; right: 0; top: {{ item.top }}; z-index: {{ item.z }}; height: 104px; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 12px; pointer-events: none; transform: {{ item.lift }}; transition: transform 0.3s ease">
+<svg aria-hidden="true" viewBox="0 0 260 150" style="width: 172px; height: 99px; flex: none; overflow: visible">
+<polygon points="10,66 130,126 130,140 10,80" style="fill: #ecebe6; stroke: {{ item.stroke }}; stroke-width: 1.2; pointer-events: auto"></polygon>
+<polygon points="130,126 250,66 250,80 130,140" style="fill: #e1dfd8; stroke: {{ item.stroke }}; stroke-width: 1.2; pointer-events: auto"></polygon>
+<polygon points="130,6 250,66 130,126 10,66" style="fill: {{ item.topFill }}; stroke: {{ item.stroke }}; stroke-width: 1.2; pointer-events: auto; transition: fill 0.25s"></polygon>
+<circle cx="130" cy="66" r="{{ item.dotR }}" style="fill: {{ item.dotFill }}"></circle>
+</svg>
+<span style="min-width: 0; pointer-events: auto; display: block; padding: 8px 0">
+<span style="display: flex; align-items: baseline; gap: 8px"><span style="font-size: 11px; letter-spacing: 0.1em; color: #6b7380">{{ item.num }}</span><span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.15; color: {{ item.verbColor }}">{{ item.verb }}</span></span>
+<span class="lshort" style="font-size: 12.5px; line-height: 1.3; color: #4b5260">{{ item.short }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+</div>
+
+<article style="flex: 999 1 460px; min-width: 0; border-left: 1px solid #15181d; padding: 4px 0 4px 32px" aria-live="polite">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #1e4b6e">{{ sel.num }} · {{ sel.verb }}</p>
+<h3 style="margin: 10px 0 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.15">{{ sel.title }}</h3>
+<p style="margin: 16px 0 0; max-width: 38rem; color: #4b5260">{{ sel.summary }}</p>
+
+<div style="margin-top: 28px; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px 20px">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 72px; line-height: 0.9; letter-spacing: -0.02em">{{ sel.gainFigure }}</span>
+<span style="max-width: 19rem; font-size: 14px; line-height: 1.35; color: #6b7380; padding-bottom: 4px">{{ sel.gainLabel }}</span>
+</div>
+
+<p style="margin: 32px 0 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b7380">{{ t.approach }}</p>
+<ol style="margin: 10px 0 0; padding: 0; list-style: none; border-top: 1px solid #e4e2dc">
+<sc-for list="{{ sel.approach }}" as="pt" hint-placeholder-count="3">
+<li style="display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid #e4e2dc">
+<span style="flex: none; width: 20px; font-size: 12px; color: #6b7380; padding-top: 3px">{{ pt.n }}</span>
+<span>{{ pt.text }}</span>
+</li>
+</sc-for>
+</ol>
+
+<p style="margin: 28px 0 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b7380">{{ t.covers }}</p>
+<p style="margin: 8px 0 0; color: #15181d">{{ sel.coverage }}</p>
+<div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center">
+<button type="button" onClick="{{ openCase }}" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 0; background: #15181d; color: #fbfaf7; cursor: pointer; font-size: 15px">{{ t.openCase }} →</button>
+<sc-if value="{{ sel.hasRepo }}" hint-placeholder-val="{{ true }}">
+<a href="{{ sel.repo }}" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px">{{ t.repo }} ↗</a>
+</sc-if>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="projects" style="background: #fbfaf7">
+<div style="max-width: 1160px; margin: 0 auto; padding: 80px 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 40px">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.15">{{ t.projTitle }}</h2>
+<p style="margin: 0; max-width: 30rem; color: #4b5260; font-size: 15px">{{ t.projHint }}</p>
+</div>
+<div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px">
+<sc-for list="{{ ventures }}" as="v" hint-placeholder-count="5">
+<button type="button" onClick="{{ v.pick }}" aria-pressed="{{ v.pressed }}" style="min-height: 112px; padding: 16px 18px; text-align: left; cursor: pointer; border-radius: 10px; border: 1px solid {{ v.border }}; background: {{ v.bg }}; color: {{ v.fg }}; transition: background 0.2s, color 0.2s">
+<span style="display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75">{{ v.status }}</span>
+<span style="display: block; margin-top: 8px; font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.25">{{ v.name }}</span>
+</button>
+</sc-for>
+</div>
+<div style="margin-top: 16px; border: 1px solid #e4e2dc; border-radius: 10px; padding: 32px; background: #ffffff" aria-live="polite">
+<p style="margin: 0; max-width: 46rem; font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; line-height: 1.4">{{ venture.what }}</p>
+<p style="margin: 28px 0 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b7380">{{ t.solved }}</p>
+<div style="margin-top: 10px; border-top: 1px solid #e4e2dc">
+<sc-for list="{{ venture.cases }}" as="cs" hint-placeholder-count="2">
+<div style="display: flex; flex-wrap: wrap; gap: 4px 32px; padding: 14px 0; border-bottom: 1px solid #e4e2dc">
+<p style="flex: 1 1 260px; min-width: 0; margin: 0; color: #15181d">{{ cs.problem }}</p>
+<p style="flex: 1 1 320px; min-width: 0; margin: 0; color: #4b5260"><span aria-hidden="true" style="color: #b8622a">→ </span>{{ cs.solution }}</p>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section id="path" style="border-top: 1px solid #e4e2dc; max-width: 1160px; margin: 0 auto; padding: 80px 24px">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-start">
+<h2 style="flex: 1 1 320px; min-width: 0; margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.15">{{ t.pathTitle }}</h2>
+<div style="flex: 1 1 420px; min-width: 0; color: #4b5260">
+<p style="margin: 0">{{ t.about1 }}</p>
+<p style="margin: 14px 0 0">{{ t.about2 }}</p>
+</div>
+</div>
+
+<div style="margin-top: 48px; display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: flex-start">
+<div style="flex: 1 1 400px; min-width: 0">
+<div style="position: relative; height: 20px; margin: 0 12px; font-size: 12px; color: #6b7380" aria-hidden="true">
+<sc-for list="{{ ticks }}" as="tk" hint-placeholder-count="5">
+<span style="position: absolute; left: {{ tk.left }}; transform: translateX(-50%)">{{ tk.year }}</span>
+</sc-for>
+</div>
+<ol style="margin: 6px 0 0; padding: 0; list-style: none; border-top: 1px solid #15181d">
+<sc-for list="{{ roles }}" as="r" hint-placeholder-count="6">
+<li style="border-bottom: 1px solid #e4e2dc">
+<button type="button" onClick="{{ r.pick }}" aria-pressed="{{ r.pressed }}" style="width: 100%; min-height: 72px; padding: 14px 12px 16px; border: 0; background: {{ r.bg }}; cursor: pointer; text-align: left; transition: background 0.2s">
+<span style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; align-items: baseline">
+<span style="font-weight: 500; font-size: 16px; color: {{ r.color }}">{{ r.title }}</span>
+<span style="font-size: 13px; color: #6b7380">{{ r.years }}</span>
+</span>
+<span style="display: block; font-size: 14px; color: #4b5260">{{ r.org }}</span>
+<span style="display: block; position: relative; margin-top: 12px; height: 6px; border-radius: 3px; background: #e9e7e1">
+<span style="position: absolute; top: 0; bottom: 0; border-radius: 3px; left: {{ r.left }}; width: {{ r.width }}; background: {{ r.bar }}; transition: background 0.2s"></span>
+</span>
+</button>
+</li>
+</sc-for>
+</ol>
+</div>
+
+<div style="flex: 1 1 400px; min-width: 0; background: #ffffff; border: 1px solid #e4e2dc; border-radius: 10px; padding: 32px" aria-live="polite">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #1e4b6e">{{ role.chapter }}</p>
+<p style="margin: 10px 0 0; font-family: 'Source Serif 4', Georgia, serif; font-size: clamp(1.6rem, 3vw, 2rem); line-height: 1.2">{{ role.title }}</p>
+<p style="margin: 6px 0 0; color: #4b5260; font-size: 15px">{{ role.org }} · {{ role.years }} · {{ role.duration }}</p>
+<p style="margin: 20px 0 0; color: #4b5260">{{ role.text }}</p>
+
+<p style="margin: 28px 0 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b7380">{{ t.pickedUp }}</p>
+<div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ role.gained }}" as="g" hint-placeholder-count="3">
+<span style="display: inline-flex; align-items: baseline; gap: 8px; padding: 6px 12px; border: 1px solid #cfd3d8; border-radius: 999px; font-size: 14px"><span style="font-size: 11px; color: #6b7380">{{ g.num }}</span>{{ g.name }}</span>
+</sc-for>
+</div>
+
+<div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #e4e2dc">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px">
+<span style="font-size: 14px; color: #4b5260">{{ t.stackSoFar }}</span>
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 26px">{{ role.total }} / 12</span>
+</div>
+<div style="margin-top: 10px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 4px" aria-hidden="true">
+<sc-for list="{{ role.cells }}" as="cl" hint-placeholder-count="12">
+<span style="height: 10px; border-radius: 2px; background: {{ cl.bg }}"></span>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="credentials" style="border-top: 1px solid #e4e2dc; background: #ffffff">
+<div style="max-width: 1160px; margin: 0 auto; padding: 80px 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 40px">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.15">{{ t.credsTitle }}</h2>
+<p style="margin: 0; max-width: 30rem; color: #4b5260; font-size: 15px">{{ t.credsHint }}</p>
+</div>
+
+<div style="margin-top: 36px; display: flex; flex-wrap: wrap; gap: 32px 48px; align-items: flex-start">
+<div style="flex: 1 1 260px; min-width: 0; max-width: 340px" role="group" aria-label="Filter">
+<sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+<button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.pressed }}" style="width: 100%; min-height: 52px; padding: 10px 14px; border: 0; border-bottom: 1px solid #e4e2dc; background: {{ f.bg }}; cursor: pointer; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px; transition: background 0.2s">
+<span style="font-size: 15.5px; color: {{ f.fg }}; font-weight: {{ f.weight }}">{{ f.label }}</span>
+<span style="display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" style="display: block; height: 6px; border-radius: 3px; width: {{ f.barW }}; background: {{ f.bar }}"></span>
+<span style="font-size: 13px; color: #6b7380; min-width: 14px; text-align: right">{{ f.count }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+
+<div style="flex: 999 1 460px; min-width: 0" aria-live="polite">
+<p style="margin: 0; font-size: 14.5px; color: #4b5260">{{ certNote }}</p>
+<div style="margin-top: 16px; border-top: 1px solid #15181d">
+<sc-for list="{{ certs }}" as="c" hint-placeholder-count="6">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; padding: 16px 0; border-bottom: 1px solid #e4e2dc">
+<span style="flex: none; width: 64px; font-size: 12px; letter-spacing: 0.08em; color: #6b7380">{{ c.code }}</span>
+<span style="flex: 999 1 240px; min-width: 0">
+<span style="display: block; font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.3">{{ c.name }}</span>
+<span style="display: block; font-size: 13px; color: #6b7380">{{ c.issuer }} · {{ c.year }}</span>
+</span>
+<span style="flex: none; padding: 4px 12px; border-radius: 999px; font-size: 12.5px; border: 1px solid {{ c.tagBorder }}; background: {{ c.tagBg }}; color: {{ c.tagFg }}">{{ c.level }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px 48px; border-top: 1px solid #e4e2dc; padding-top: 32px">
+<div>
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b7380">{{ t.eduLabel }}</p>
+<p style="margin: 10px 0 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; line-height: 1.3">{{ t.eduName }}</p>
+<p style="margin: 4px 0 0; color: #4b5260; font-size: 15px">Anhanguera Educacional · 2016 – 2018</p>
+</div>
+<div>
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b7380">{{ t.langLabel }}</p>
+<ul style="margin: 10px 0 0; padding: 0; list-style: none">
+<sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+<li style="display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid #e4e2dc"><span>{{ l.name }}</span><span style="color: #6b7380; font-size: 14.5px">{{ l.level }}</span></li>
+</sc-for>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+</sc-if>
+
+<sc-if value="{{ isCase }}" hint-placeholder-val="{{ false }}">
+<section style="border-bottom: 1px solid #e4e2dc">
+<div style="max-width: 1160px; margin: 0 auto; padding: 40px 24px 64px">
+<button type="button" onClick="{{ goHome }}" style="min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font-size: 14px; color: #4b5260">← {{ t.allLayers }}</button>
+<div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: flex-end">
+<div style="flex: 999 1 520px; min-width: 0">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #1e4b6e">{{ sel.num }} · {{ sel.verb }} · {{ t.caseStudy }}</p>
+<h1 style="margin: 16px 0 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(2.2rem, 5.5vw, 3.8rem); line-height: 1.06; letter-spacing: -0.01em">{{ sel.caseTitle }}</h1>
+<p style="margin: 24px 0 0; max-width: 40rem; font-size: 1.1rem; color: #4b5260">{{ sel.caseSummary }}</p>
+<p style="margin: 20px 0 0; max-width: 40rem; font-size: 13.5px; color: #6b7380; border-left: 2px solid #e4e2dc; padding-left: 14px">{{ t.confidential }}</p>
+</div>
+<div style="flex: 1 1 240px; min-width: 0; border-left: 1px solid #15181d; padding-left: 24px">
+<p style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 84px; line-height: 0.9; letter-spacing: -0.02em">{{ sel.figure }}</p>
+<p style="margin: 12px 0 0; max-width: 16rem; font-size: 14px; line-height: 1.35; color: #6b7380">{{ sel.figureLabel }}</p>
+</div>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1160px; margin: 0 auto; padding: 64px 24px; display: flex; flex-wrap: wrap; gap: 16px 64px">
+<h2 style="flex: 1 1 240px; min-width: 0; margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.7rem, 3.5vw, 2.3rem); line-height: 1.15">{{ t.context }}</h2>
+<p style="flex: 999 1 480px; min-width: 0; margin: 0; max-width: 44rem; font-family: 'Source Serif 4', Georgia, serif; font-size: 1.3rem; line-height: 1.5">{{ sel.context }}</p>
+</section>
+
+<section style="border-top: 1px solid #e4e2dc; border-bottom: 1px solid #e4e2dc; background: #ffffff">
+<div style="max-width: 1160px; margin: 0 auto; padding: 64px 24px 72px">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.7rem, 3.5vw, 2.3rem); line-height: 1.15">{{ t.flowTitle }}</h2>
+<p style="margin: 10px 0 0; max-width: 38rem; color: #4b5260; font-size: 15px">{{ t.flowHint }}</p>
+<div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px">
+<sc-for list="{{ stages }}" as="sg" hint-placeholder-count="4">
+<button type="button" onClick="{{ sg.pick }}" aria-pressed="{{ sg.pressed }}" style="min-height: 76px; padding: 12px 16px; text-align: left; cursor: pointer; border-radius: 8px; border: 1px solid {{ sg.border }}; background: {{ sg.bg }}; color: {{ sg.fg }}; transition: background 0.2s, color 0.2s">
+<span style="display: block; font-size: 11px; letter-spacing: 0.12em; opacity: 0.75">{{ sg.n }}</span>
+<span style="display: block; margin-top: 4px; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.2">{{ sg.name }}</span>
+</button>
+</sc-for>
+</div>
+<div style="margin-top: 20px; border-left: 1px solid #15181d; padding: 6px 0 6px 24px; max-width: 46rem" aria-live="polite">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #1e4b6e">{{ stage.n }} · {{ stage.name }}</p>
+<p style="margin: 8px 0 0; font-size: 1.08rem">{{ stage.text }}</p>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1160px; margin: 0 auto; padding: 64px 24px; display: flex; flex-wrap: wrap; gap: 40px 64px">
+<div style="flex: 1 1 300px; min-width: 0">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.7rem, 3.5vw, 2.3rem); line-height: 1.15">{{ t.decisions }}</h2>
+<ol style="margin: 20px 0 0; padding: 0; list-style: none; border-top: 1px solid #15181d">
+<sc-for list="{{ sel.points }}" as="pt" hint-placeholder-count="3">
+<li style="display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid #e4e2dc">
+<span style="flex: none; width: 20px; font-size: 12px; color: #6b7380; padding-top: 3px">{{ pt.n }}</span>
+<span>{{ pt.text }}</span>
+</li>
+</sc-for>
+</ol>
+<dl style="margin: 32px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px">
+<sc-for list="{{ sel.facts }}" as="fc" hint-placeholder-count="2">
+<div style="border-top: 1px solid #15181d; padding-top: 10px">
+<dt style="font-family: 'Source Serif 4', Georgia, serif; font-size: 30px; line-height: 1.1">{{ fc.value }}</dt>
+<dd style="margin: 4px 0 0; font-size: 13px; line-height: 1.35; color: #6b7380">{{ fc.label }}</dd>
+</div>
+</sc-for>
+</dl>
+</div>
+<div style="flex: 999 1 480px; min-width: 0">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(1.7rem, 3.5vw, 2.3rem); line-height: 1.15">{{ t.solved }}</h2>
+<div style="margin-top: 20px; border-top: 1px solid #15181d">
+<sc-for list="{{ sel.cases }}" as="cs" hint-placeholder-count="3">
+<div style="padding: 18px 0; border-bottom: 1px solid #e4e2dc">
+<p style="margin: 0; font-weight: 500">{{ cs.problem }}</p>
+<p style="margin: 6px 0 0; color: #4b5260"><span aria-hidden="true" style="color: #b8622a">→ </span>{{ cs.solution }}</p>
+</div>
+</sc-for>
+</div>
+<p style="margin: 24px 0 0; font-size: 13.5px; color: #6b7380">{{ sel.stack }}</p>
+<sc-if value="{{ sel.hasRepo }}" hint-placeholder-val="{{ true }}">
+<a href="{{ sel.repo }}" style="display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; font-size: 15px">{{ t.repo }} ↗</a>
+</sc-if>
+</div>
+</section>
+
+<section style="border-top: 1px solid #e4e2dc; background: #ffffff">
+<div style="max-width: 1160px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between">
+<button type="button" onClick="{{ goHome }}" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid #15181d; background: none; cursor: pointer; font-size: 15px; color: #15181d">← {{ t.allLayers }}</button>
+<button type="button" onClick="{{ nextCase }}" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 0; background: #15181d; color: #fbfaf7; cursor: pointer; font-size: 15px">{{ t.next }}: {{ nextSel.verb }} →</button>
+</div>
+</section>
+</sc-if>
+
+<footer id="contact" style="border-top: 1px solid #e4e2dc">
+<div style="max-width: 1160px; margin: 0 auto; padding: 80px 24px 40px; display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: flex-end">
+<div style="flex: 999 1 420px; min-width: 0">
+<p style="margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b7380">{{ t.navContact }}</p>
+<p style="margin: 16px 0 0; max-width: 36rem; font-family: 'Source Serif 4', Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.2">{{ t.contactLine }}</p>
+<p style="margin: 16px 0 0; color: #4b5260">{{ t.contactSub }}</p>
+</div>
+<div style="flex: 1 1 260px; min-width: 0">
+<a href="mailto:gustavonunesmartins@hotmail.com" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 52px; border-bottom: 1px solid #e4e2dc; color: #15181d; text-decoration: none"><span style="min-width: 0; overflow-wrap: anywhere">gustavonunesmartins@hotmail.com</span><span aria-hidden="true">↗</span></a>
+<a href="https://www.linkedin.com/in/gustavomartins98" style=""display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-bottom: 1px solid #e4e2dc; color: #15181d; text-decoration: none"><span>LinkedIn</span><span aria-hidden="true">↗</span></a>
+</div>
+</div>
+<p style="max-width: 1160px; margin: 0 auto; padding: 0 24px 32px; font-size: 12.5px; color: #6b7380">© 2026 Gustavo Nunes Martins</p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startLang":{"editor":"enum","options":["en","pt"],"default":"en"},"$preview":{"width":1360,"height":5200}}'>
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const lang = st.lang || this.props.startLang || 'en';
+const en = lang === 'en';
+const L = (a, b) => (en ? a : b);
+const picked = st.picked || 'soc';
+const view = st.view || 'home';
+const stageIdx = st.stage || 0;
+const toTop = () => { try { setTimeout(() => window.scrollTo(0, 0), 0); } catch (e) {} };
+const chIdx = st.chapter === undefined ? 2 : st.chapter;
+const filter = st.filter || 'all';
+const gh = 'https://github.com/GustavoNM1/';
+
+const data = [
+{ id: 'soc', verb: L('Defend', 'Defender'), short: L('Multi-tenant SOC platform', 'Plataforma de SOC multi-cliente'),
+caseTitle: L('Multi-tenant SOC platform', 'Plataforma de SOC multi-cliente'),
+caseSummary: L('Detection, case management and an AI analyst that triages every alert for a managed security provider, plus a portal where each customer sees their own posture.', 'Detecção, gestão de casos e um analista de IA que faz a triagem de cada alerta em um provedor de segurança gerenciada, além de um portal onde cada cliente vê a própria postura.'),
+figure: '30+', figureLabel: L('automated response playbooks. Routine containment went from manual steps to one click by an analyst', 'playbooks de resposta automatizados. A contenção de rotina saiu de passos manuais para um clique do analista'),
+points: [L('Containment only runs when an analyst approves it.', 'A contenção só roda quando um analista aprova.'), L('Events are anonymised before they reach the model.', 'Os eventos são anonimizados antes de chegar ao modelo.'), L('Detection time is counted from the event, not from the alert.', 'O tempo de detecção é contado a partir do evento, não do alerta.')],
+stack: 'Wazuh · Shuffle · LiteLLM · Python · Node.js · PostgreSQL', repo: '', hasCase: true },
+{ id: 'offsec', verb: L('Test', 'Testar'), short: L('Offensive security', 'Segurança ofensiva'),
+caseTitle: L('Offensive security', 'Segurança ofensiva'),
+caseSummary: L('Penetration tests and vulnerability assessments on internal assets in an earlier role, regular lab practice, and a platform of my own where AI agents run the test.', 'Testes de invasão e análises de vulnerabilidade em ativos internos em um cargo anterior, prática regular em laboratórios e uma plataforma própria em que agentes de IA executam o teste.'),
+figure: '1:1', figureLabel: L('one isolated server per test, so two customers never share an environment', 'um servidor isolado por teste, para que dois clientes nunca dividam o mesmo ambiente'),
+points: [L('Internal penetration tests and vulnerability assessments.', 'Testes de invasão e análises de vulnerabilidade internos.'), L('Incident response reports with forensic analysis.', 'Relatórios de resposta a incidentes com análise forense.'), L('Regular practice on Hack The Box and OffSec Proving Grounds.', 'Prática regular no Hack The Box e no OffSec Proving Grounds.')],
+stack: 'Hack The Box · OffSec Proving Grounds · Python', repo: '', hasCase: false },
+{ id: 'monitoring', verb: L('Observe', 'Observar'), short: L('Monitoring and alert escalation', 'Monitoramento e escalonamento'),
+caseTitle: L('Monitoring and alert escalation', 'Monitoramento e escalonamento de alertas'),
+caseSummary: L('Zabbix and Grafana for a managed services provider, built so that a critical alert at night reaches a person.', 'Zabbix e Grafana para um provedor de serviços gerenciados, montados para que um alerta crítico de madrugada chegue a uma pessoa.'),
+figure: '24/7', figureLabel: L('a critical alert now reaches a person at any hour, by voice call. Before, it waited in an inbox until morning', 'um alerta crítico agora chega a uma pessoa a qualquer hora, por ligação de voz. Antes, esperava na caixa de e-mail até de manhã'),
+points: [L('Critical alerts nobody acknowledges become a voice call.', 'Alertas críticos sem confirmação viram ligação de voz.'), L('Backups are monitored with no API and no inbound port.', 'Backups monitorados sem API e sem porta de entrada.'), L('NOC dashboards are generated from code, at most 8 queries per screen.', 'Dashboards de NOC gerados por código, no máximo 8 consultas por tela.')],
+stack: 'Zabbix · Grafana · Python · PowerShell · SNMP', repo: '', hasCase: false },
+{ id: 'endpoint', verb: L('Protect', 'Proteger'), short: L('Endpoint protection', 'Proteção de endpoint'),
+caseTitle: L('Endpoint protection for many customers', 'Proteção de endpoint para vários clientes'),
+caseSummary: L('Administration of endpoint protection across customer environments, with its alerts brought into the SOC.', 'Administração de proteção de endpoint em ambientes de vários clientes, com os alertas dela levados para o SOC.'),
+figure: '1', figureLabel: L('place to see the endpoint alert and the network alert about the same machine. Before, two consoles', 'lugar para ver o alerta de endpoint e o alerta de rede sobre a mesma máquina. Antes, dois consoles'),
+points: [L('EDR and MDR alerts are collected into the SOC on a schedule.', 'Alertas de EDR e MDR são coletados para o SOC de forma agendada.'), L('Events are deduplicated by event time, and severities are mapped.', 'Os eventos são deduplicados pelo horário do evento, e as severidades são mapeadas.'), L('Each alert is attributed to the affected device.', 'Cada alerta é atribuído ao dispositivo afetado.')],
+stack: 'Kaspersky Security Center · EDR · MDR', repo: '', hasCase: false },
+{ id: 'drp', verb: L('Plan', 'Planejar'), short: L('Disaster recovery plan', 'Plano de recuperação de desastre'),
+caseTitle: L('Disaster recovery plan for a multi-site company', 'Plano de recuperação de desastre para uma empresa com várias unidades'),
+caseSummary: L('I wrote the whole disaster recovery plan for a large company: every server, storage array, virtual machine and network device, across three sites linked by VPN, including separate virtualization environments.', 'Escrevi o plano de recuperação de desastre inteiro de uma empresa grande: cada servidor, storage, máquina virtual e equipamento de rede, em três unidades interligadas por VPN, incluindo ambientes de virtualização apartados.'),
+figure: '61', figureLabel: L('assets, each with its impact, contingency, recovery time and action plan written down', 'ativos, cada um com impacto, contingência, tempo de recuperação e plano de ação por escrito'),
+points: [L('One row per asset, with the same questions for all: what stops, what covers it, how long it takes.', 'Uma linha por ativo, com as mesmas perguntas para todos: o que para, o que cobre, quanto tempo leva.'), L('Recovery is described in levels, from automatic failover to rebuilding from backup.', 'A recuperação é descrita em níveis, do failover automático à reconstrução a partir do backup.'), L('RTO is stated per recovery path, because restoring from backup and failing over to the cloud take different times.', 'O RTO é informado por caminho de recuperação, porque restaurar do backup e fazer failover para a nuvem levam tempos diferentes.')],
+stack: 'Veeam · Azure Site Recovery · Hyper-V · FortiGate · Aruba', repo: '', hasCase: false },
+{ id: 'backup', verb: L('Recover', 'Recuperar'), short: L('Backup and disaster recovery', 'Backup e recuperação de desastre'),
+caseTitle: L('Backup and disaster recovery', 'Backup e recuperação de desastre'),
+caseSummary: L('A cloud-only backup replaced by a layered design on a Hyper-V cluster, with copies that stolen credentials cannot delete.', 'Um backup só em nuvem substituído por um desenho em camadas sobre um cluster Hyper-V, com cópias que credenciais roubadas não conseguem apagar.'),
+figure: '14d', figureLabel: L('of backups that stolen admin credentials cannot delete. Before, none', 'de backups que credenciais de administrador roubadas não conseguem apagar. Antes, nenhum'),
+points: [L('Hardened Linux repository, immutable for 14 days.', 'Repositório Linux endurecido, imutável por 14 dias.'), L('Second copy off-site, encrypted and immutable for 7 days.', 'Segunda cópia externa, criptografada e imutável por 7 dias.'), L('A written restore procedure delivered with the project.', 'Procedimento de restauração escrito, entregue com o projeto.')],
+stack: 'Veeam · Ubuntu · Hyper-V · Dell PowerVault', repo: '', hasCase: false },
+{ id: 'workplace', verb: L('Deliver', 'Entregar'), short: L('Cloud workplace', 'Ambiente de trabalho em nuvem'),
+caseTitle: L('Cloud workplace: virtual desktops and Microsoft 365', 'Ambiente de trabalho em nuvem: desktops virtuais e Microsoft 365'),
+caseSummary: L('Customer environments moved to the cloud: virtual desktops in Azure, files in SharePoint and mail in Exchange Online, with identity and devices managed centrally.', 'Ambientes de clientes levados para a nuvem: desktops virtuais no Azure, arquivos no SharePoint e e-mail no Exchange Online, com identidade e dispositivos gerenciados de forma central.'),
+figure: '3', figureLabel: L('workloads moved off local servers: files, mail and desktops', 'cargas tiradas de servidores locais: arquivos, e-mail e desktops'),
+points: [L('Virtual desktops with secure remote access.', 'Desktops virtuais com acesso remoto seguro.'), L('Files moved from local servers to SharePoint.', 'Arquivos levados de servidores locais para o SharePoint.'), L('Identity in Entra ID and devices in Intune.', 'Identidade no Entra ID e dispositivos no Intune.')],
+stack: 'Azure Virtual Desktop · Microsoft 365 · SharePoint · Entra ID · Intune', repo: '', hasCase: false },
+{ id: 'identity', verb: L('Identify', 'Identificar'), short: L('Active Directory migration to Azure', 'Migração de Active Directory para Azure'),
+caseTitle: L('Active Directory migration to Azure', 'Migração de Active Directory para Azure'),
+caseSummary: L('Identity moved from an end-of-life physical server to Azure in phases that could each be rolled back.', 'Identidade levada de um servidor físico sem suporte para o Azure, em fases que podiam ser revertidas uma a uma.'),
+figure: '0', figureLabel: L('logins that depend on a physical server after the migration. Before, all of them', 'logins que dependem de um servidor físico depois da migração. Antes, todos'),
+points: [L('Two domain controllers in two Azure regions, in one case on two continents.', 'Dois controladores de domínio em duas regiões do Azure, em um dos casos em dois continentes.'), L('The FSMO transfer was treated as the real cut-over.', 'A transferência de FSMO foi tratada como a virada real.'), L('Validated with the legacy server powered off.', 'Validada com o servidor antigo desligado.')],
+stack: 'Azure · AD DS · Windows Server 2022 · IPsec', repo: '', hasCase: false },
+{ id: 'perimeter', verb: L('Connect', 'Conectar'), short: L('Firewalls and VPNs for many customers', 'Firewalls e VPNs de vários clientes'),
+caseTitle: L('Firewalls and VPNs for many customers', 'Firewalls e VPNs de vários clientes'),
+caseSummary: L('Next-generation firewalls, site-to-site and remote-access VPNs and network security policies across multiple customer environments.', 'Firewalls de próxima geração, VPNs site a site e de acesso remoto e políticas de segurança de rede em vários ambientes de clientes.'),
+figure: '100%', figureLabel: L('of site-to-site tunnels discovered and monitored, so a drop is seen before the branch calls', 'dos túneis site a site descobertos e monitorados, para que uma queda seja vista antes de a filial ligar'),
+points: [L('One documented IKEv2 policy for every tunnel, with no per-site exceptions.', 'Uma política IKEv2 documentada para todos os túneis, sem exceções por site.'), L('Each tunnel is monitored as an object of its own.', 'Cada túnel é monitorado como um objeto próprio.'), L('Firewall logs feed the SOC.', 'Os logs dos firewalls alimentam o SOC.')],
+stack: 'FortiGate · SonicWall · IPsec · SSL VPN · SD-WAN', repo: '', hasCase: false },
+{ id: 'cluster', verb: L('Host', 'Hospedar'), short: L('Hyper-V cluster and shared storage', 'Cluster Hyper-V e storage compartilhado'),
+caseTitle: L('Hyper-V failover cluster and shared storage', 'Cluster de failover Hyper-V e storage compartilhado'),
+caseSummary: L('A production environment that ran on one server became a two-node failover cluster on shared storage, without rebuilding the virtual machines.', 'Um ambiente de produção que rodava em um único servidor virou um cluster de failover com dois nós sobre storage compartilhado, sem reconstruir as máquinas virtuais.'),
+figure: '1 → 2', figureLabel: L('servers production can run on. A hardware failure no longer stops the company', 'servidores em que a produção consegue rodar. Uma falha de hardware não para mais a empresa'),
+points: [L('Two nodes, active-active, with a dedicated live migration network.', 'Dois nós, ativo-ativo, com rede dedicada de live migration.'), L('Storage with dual controllers, a RAID group and two global spare disks.', 'Storage com controladoras duplas, um grupo RAID e dois discos de spare global.'), L('Each virtual machine has a failover priority, and the domain controller comes first.', 'Cada máquina virtual tem uma prioridade de failover, e o controlador de domínio vem primeiro.')],
+stack: 'Hyper-V · Windows Server failover clustering · Dell PowerVault · Dell PowerEdge', repo: '', hasCase: false },
+{ id: 'lab', verb: L('Automate', 'Automatizar'), short: L('Infrastructure as code and scripts', 'Infraestrutura como código e scripts'),
+caseTitle: L('Infrastructure automation lab', 'Laboratório de automação de infraestrutura'),
+caseSummary: L('My own Terraform, Vagrant and Ansible lab, rewritten after I reviewed the first version.', 'Meu laboratório de Terraform, Vagrant e Ansible, reescrito depois que revisei a primeira versão.'),
+figure: '1', figureLabel: L('command builds the whole lab, and it can be run again safely', 'comando monta o laboratório inteiro, e pode ser rodado de novo com segurança'),
+points: [L('No identifiers or secrets in the code.', 'Nenhum identificador ou segredo no código.'), L('Management access only from a validated address.', 'Acesso de gerenciamento só a partir de um endereço validado.'), L('Idempotent Ansible in place of a one-shot script.', 'Ansible idempotente no lugar de um script de execução única.')],
+stack: 'Terraform · Ansible · Vagrant · Python · PowerShell · Bash', repo: '', hasCase: false },
+{ id: 'wire', verb: L('Wire', 'Cabear'), short: L('Hardware and cabling', 'Hardware e cabeamento'),
+caseTitle: L('Hardware and structured cabling', 'Hardware e cabeamento estruturado'),
+caseSummary: L('Where I started: computer maintenance, network points and structured cabling, on site.', 'Onde comecei: manutenção de computadores, pontos de rede e cabeamento estruturado, no local.'),
+figure: '4', figureLabel: L('years on site, close to users and hardware, before moving to operations', 'anos em campo, perto de usuários e hardware, antes de ir para a operação'),
+points: [L('Maintenance of desktops, laptops and printers.', 'Manutenção de desktops, notebooks e impressoras.'), L('Network points and structured cabling in offices and healthcare units.', 'Pontos de rede e cabeamento estruturado em escritórios e unidades de saúde.'), L('A report for every service visit.', 'Um relatório a cada atendimento.')],
+stack: L('Structured cabling · Furukawa Certified Professional', 'Cabeamento estruturado · Furukawa Certified Professional'), repo: '', hasCase: false }
+];
+
+const casesData = {
+drp: [
+[L('Nobody could say what would stop if a given device failed.', 'Ninguém sabia dizer o que pararia se um determinado equipamento falhasse.'), L('Every asset has its business impact and the services it affects written next to it.', 'Cada ativo tem ao lado o impacto no negócio e os serviços que afeta.')],
+[L('Recovery time was a guess.', 'O tempo de recuperação era um chute.'), L('RTO and RPO are stated per server and per recovery path.', 'RTO e RPO são informados por servidor e por caminho de recuperação.')],
+[L('In a crisis, people do not know who to call or in what order.', 'Em uma crise, as pessoas não sabem quem chamar nem em que ordem.'), L('Each asset has a communication plan and an action plan.', 'Cada ativo tem um plano de comunicação e um plano de ação.')],
+[L('A plan gets old as the environment changes.', 'Um plano envelhece conforme o ambiente muda.'), L('The document is versioned and was revised after the backup platform changed.', 'O documento é versionado e foi revisado depois da troca da plataforma de backup.')]
+],
+offsec: [
+[L('Intrusive tools for different customers must never share an environment.', 'Ferramentas intrusivas de clientes diferentes nunca podem dividir o mesmo ambiente.'), L('On my platform, each test runs on its own cloud server, created on demand.', 'Na minha plataforma, cada teste roda em um servidor de nuvem próprio, criado sob demanda.')],
+[L('Model cost grows with every step an agent takes.', 'O custo do modelo cresce a cada passo de um agente.'), L('A lighter model for the high-volume agents, and a stronger one only where the reasoning needs it.', 'Um modelo mais leve para os agentes de alto volume, e um mais forte só onde o raciocínio exige.')]
+],
+endpoint: [
+[L('Endpoint alerts lived in a console apart from the SOC.', 'Os alertas de endpoint ficavam em um console separado do SOC.'), L('An integration collects them into the same cases as everything else.', 'Uma integração os coleta para os mesmos casos de todo o resto.')],
+[L('Alerts pointed at the management server, not at the machine with the problem.', 'Os alertas apontavam para o servidor de gerenciamento, não para a máquina com o problema.'), L('Each alert is attributed to the affected device.', 'Cada alerta é atribuído ao dispositivo afetado.')]
+],
+soc: [
+[L('More alerts arrived than the analysts could review.', 'Chegavam mais alertas do que os analistas conseguiam revisar.'), L('An AI analyst triages every alert, and containment still waits for a person.', 'Um analista de IA faz a triagem de cada alerta, e a contenção continua esperando uma pessoa.')],
+[L('Customer data could not be sent to an external model as it was.', 'Dados de clientes não podiam ir para um modelo externo como estavam.'), L('A tokenizer anonymises every event, and the mapping never leaves the platform.', 'Um tokenizador anonimiza cada evento, e o mapeamento nunca sai da plataforma.')],
+[L('An API silently truncated large executions, so the portal showed no activity during attacks.', 'Uma API truncava em silêncio as execuções grandes, e o portal mostrava zero atividade durante ataques.'), L('Every playbook now writes a small fixed-size record right after the trigger.', 'Cada playbook passou a gravar um registro pequeno, de tamanho fixo, logo após o gatilho.')]
+],
+monitoring: [
+[L('Alerts went only to email, so a critical event at night went unseen.', 'Os alertas iam só por e-mail, e um evento crítico de madrugada passava despercebido.'), L('Escalation by severity, ending in a voice call when nobody acknowledges.', 'Escalonamento por severidade, terminando em ligação de voz quando ninguém confirma.')],
+[L('Some backup software had no API to monitor.', 'Alguns softwares de backup não tinham API para monitorar.'), L('A read-only collector writes the state to a file, and the agent sends it out. Nothing listens on the server.', 'Um coletor somente leitura grava o estado em arquivo, e o agente o envia. Nada fica escutando no servidor.')],
+[L('An update renamed an API field and every dashboard went blank.', 'Uma atualização renomeou um campo da API e todos os dashboards ficaram em branco.'), L('Compatibility restored on the server, and the fix contributed to the open-source integration.', 'Compatibilidade restaurada no servidor, e a correção contribuída para a integração open source.')]
+],
+backup: [
+[L('Anyone with admin credentials could delete every backup copy.', 'Qualquer pessoa com credenciais de administrador podia apagar todas as cópias de backup.'), L('Two immutable copies: 14 days on a hardened Linux repository and 7 days off-site.', 'Duas cópias imutáveis: 14 dias em repositório Linux endurecido e 7 dias fora do local.')],
+[L('Restoring a large VM meant downloading terabytes.', 'Restaurar uma VM grande significava baixar terabytes.'), L('A local copy on dedicated storage, with a separate restore area.', 'Uma cópia local em storage dedicado, com área de restauração separada.')],
+[L('A copy job can stop without failing, and nobody notices.', 'Um job de cópia pode parar sem falhar, e ninguém percebe.'), L('An alert fires when a restore point does not reach the off-site copy within a day.', 'Um alerta dispara quando um ponto de restauração não chega à cópia externa em até um dia.')]
+],
+identity: [
+[L('Every login depended on one physical server with no security updates.', 'Todos os logins dependiam de um servidor físico sem atualizações de segurança.'), L('Two domain controllers in two Azure regions, each with its own backup vault.', 'Dois controladores de domínio em duas regiões do Azure, cada um com seu cofre de backup.')],
+[L('Authentication could not stop during the move.', 'A autenticação não podia parar durante a migração.'), L('A hybrid period, with every phase reversible until the old server was switched off.', 'Um período híbrido, com cada fase reversível até o servidor antigo ser desligado.')],
+[L('Nobody could say for sure when the migration was finished.', 'Ninguém conseguia dizer com certeza quando a migração tinha terminado.'), L('The old server was powered off, and logins and DNS were tested from every site.', 'O servidor antigo foi desligado, e logins e DNS foram testados a partir de cada site.')]
+],
+workplace: [
+[L('Files lived on a server inside the office.', 'Os arquivos ficavam em um servidor dentro do escritório.'), L('File servers migrated to SharePoint.', 'Servidores de arquivos migrados para o SharePoint.')],
+[L('People needed the same desktop and applications from anywhere.', 'As pessoas precisavam do mesmo desktop e dos mesmos aplicativos de qualquer lugar.'), L('Azure Virtual Desktop host pools, with profiles that follow the user.', 'Host pools do Azure Virtual Desktop, com perfis que acompanham o usuário.')],
+[L('Mail depended on local infrastructure.', 'O e-mail dependia de infraestrutura local.'), L('Mailboxes migrated to Exchange Online.', 'Caixas de correio migradas para o Exchange Online.')]
+],
+perimeter: [
+[L('A site-to-site tunnel can fail without anyone noticing.', 'Um túnel site a site pode cair sem ninguém perceber.'), L('A custom SNMP check discovers every tunnel and alerts on its state.', 'Uma checagem SNMP própria descobre cada túnel e alerta sobre o estado dele.')],
+[L('Per-site exceptions make VPN configuration impossible to audit.', 'Exceções por site tornam a configuração de VPN impossível de auditar.'), L('The same documented parameters on every tunnel.', 'Os mesmos parâmetros documentados em todos os túneis.')],
+[L('Firewall diagnosis depended on who picked up the ticket.', 'O diagnóstico de firewall dependia de quem pegava o chamado.'), L('Senior procedures written down, and an assistant that follows them.', 'Procedimentos dos seniores escritos, e um assistente que os segue.')]
+],
+cluster: [
+[L('Every virtual machine ran on the local disk of a single server.', 'Todas as máquinas virtuais rodavam no disco local de um único servidor.'), L('They were moved to shared storage and split between two nodes.', 'Foram levadas para o storage compartilhado e divididas entre dois nós.')],
+[L('A failed disk could stop production.', 'Um disco com falha podia parar a produção.'), L('A RAID group with two global spares. A disk did fail later and was replaced with no impact.', 'Um grupo RAID com dois spares globais. Um disco falhou mais tarde e foi trocado sem impacto.')],
+[L('Changes to shared infrastructure are hard to trace.', 'Mudanças em infraestrutura compartilhada são difíceis de rastrear.'), L('Every intervention has a change record.', 'Cada intervenção tem um registro de mudança.')]
+],
+wire: [
+[L('Every visit had to leave a trace.', 'Cada atendimento precisava deixar registro.'), L('A detailed report for each service, kept with the inventory.', 'Um relatório detalhado de cada serviço, mantido junto com o inventário.')]
+],
+lab: [
+[L('The first version had an identifier and a password in the code.', 'A primeira versão tinha um identificador e uma senha no código.'), L('They now come from the environment or from a vault at run time.', 'Agora vêm do ambiente ou de um cofre, na hora da execução.')],
+[L('SSH was open to the whole internet.', 'O SSH estava aberto para a internet inteira.'), L('Management access only from one validated address.', 'Acesso de gerenciamento só a partir de um endereço validado.')],
+[L('Running the install script twice duplicated configuration.', 'Rodar o script de instalação duas vezes duplicava a configuração.'), L('The official installer, wrapped so it runs once and can be repeated safely.', 'O instalador oficial, encapsulado para rodar uma vez e poder ser repetido com segurança.')]
+]
+};
+
+const caseExtra = {
+drp: { context: L('The company had three sites linked by VPN, a virtualization cluster, separate virtualization hosts, storage arrays and dozens of network devices. It asked for a disaster recovery plan that covered all of it.', 'A empresa tinha três unidades interligadas por VPN, um cluster de virtualização, hosts de virtualização apartados, storages e dezenas de equipamentos de rede. Pediu um plano de recuperação de desastre que cobrisse tudo isso.'),
+flow: [
+[L('Inventory', 'Inventário'), L('28 servers, storage arrays and virtual machines, and 33 network devices: switches, firewalls and wireless access points.', '28 servidores, storages e máquinas virtuais, e 33 equipamentos de rede: switches, firewalls e pontos de acesso sem fio.')],
+[L('Impact', 'Impacto'), L('For each asset: its criticality, whether it affects the business, and which services stop.', 'Para cada ativo: a criticidade, se afeta o negócio e quais serviços param.')],
+[L('Contingency', 'Contingência'), L('What already covers the failure, such as a cluster node, a firewall pair in high availability or replication to the cloud, and what does not.', 'O que já cobre a falha, como um nó de cluster, um par de firewalls em alta disponibilidade ou a replicação para a nuvem, e o que não cobre.')],
+[L('Recovery levels', 'Níveis de recuperação'), L('From automatic failover to repair, restore from backup and failover to the cloud, each with its expected time.', 'Do failover automático ao reparo, à restauração do backup e ao failover para a nuvem, cada um com o tempo esperado.')],
+[L('Procedures', 'Procedimentos'), L('Step-by-step procedures for restoring data and for restoring a whole site in the cloud, delivered with the plan and presented to the company.', 'Procedimentos passo a passo para restaurar dados e para restaurar uma unidade inteira na nuvem, entregues com o plano e apresentados à empresa.')]
+],
+facts: [['3', L('sites covered', 'unidades cobertas')], ['28', L('servers, storage arrays and virtual machines', 'servidores, storages e máquinas virtuais')], ['33', L('network devices', 'equipamentos de rede')], ['5', L('recovery levels at most per asset', 'níveis de recuperação no máximo por ativo')]] },
+soc: { context: L('A new SOC receives more alerts than its analysts can review, and most are repetitive. A managed service also has to keep every customer isolated and show each one the work being done for them.', 'Um SOC novo recebe mais alertas do que os analistas conseguem revisar, e a maioria é repetitiva. Um serviço gerenciado ainda precisa manter cada cliente isolado e mostrar a cada um o trabalho feito para ele.'),
+flow: [
+[L('Telemetry', 'Telemetria'), L('Firewalls, Windows and Linux servers, cloud identity and endpoint protection send events. Each source belongs to exactly one customer.', 'Firewalls, servidores Windows e Linux, identidade em nuvem e proteção de endpoint enviam eventos. Cada fonte pertence a um único cliente.')],
+[L('Detection', 'Detecção'), L('Wazuh applies rules and correlation. Alerts are read straight from its indexer, with no log management tier in between.', 'O Wazuh aplica regras e correlação. Os alertas são lidos direto do indexador, sem camada de gestão de logs no meio.')],
+[L('Forwarding', 'Encaminhamento'), L('A forwarder removes duplicates, routes by severity and only passes events from registered assets.', 'Um encaminhador remove duplicados, roteia por severidade e só repassa eventos de ativos cadastrados.')],
+[L('AI triage', 'Triagem por IA'), L('The AI analyst investigates every alert, classifies it, opens or links a case and recommends a playbook. It sees anonymised events and cannot run containment.', 'O analista de IA investiga cada alerta, classifica, abre ou vincula um caso e recomenda um playbook. Ele vê eventos anonimizados e não consegue executar contenção.')],
+[L('Analyst', 'Analista'), L('A person reviews the case and decides whether containment runs. Disagreements with the AI are stored in its long-term memory.', 'Uma pessoa revisa o caso e decide se a contenção roda. As discordâncias com a IA ficam na memória de longo prazo dela.')],
+[L('Customer portal', 'Portal do cliente'), L('Each customer sees their own dashboards, compliance score and scheduled PDF reports, behind email MFA on every login.', 'Cada cliente vê os próprios dashboards, o índice de conformidade e relatórios em PDF agendados, com MFA por e-mail em todo login.')]
+],
+facts: [['0', L('containment actions the AI can run on its own', 'ações de contenção que a IA executa sozinha')], ['57', L('commits on the platform core', 'commits no núcleo da plataforma')], ['−29%', L('instructions sent to the AI analyst', 'de instruções enviadas ao analista de IA')], ['10 / 1,042', L('executions readable before the truncation fix', 'execuções legíveis antes da correção do truncamento')]] },
+offsec: { context: L('Earlier in my career I ran internal penetration tests and vulnerability assessments and wrote incident reports with forensic analysis. I keep practising in labs, and I built a platform where AI agents run the test.', 'No começo da carreira fiz testes de invasão e análises de vulnerabilidade internos e escrevi relatórios de incidente com análise forense. Sigo praticando em laboratórios, e construí uma plataforma em que agentes de IA executam o teste.'),
+flow: [
+[L('A server per test', 'Um servidor por teste'), L('Each test gets its own cloud server, created on demand, so tools and data from different customers never meet.', 'Cada teste ganha um servidor de nuvem próprio, criado sob demanda, para que ferramentas e dados de clientes diferentes nunca se encontrem.')],
+[L('A team of agents', 'Uma equipe de agentes'), L('Agents with different roles run the test. The high-volume ones use a lighter model, and a stronger model is kept for the steps that need reasoning.', 'Agentes com papéis diferentes executam o teste. Os de alto volume usam um modelo mais leve, e um modelo mais forte fica para os passos que exigem raciocínio.')],
+[L('A controlled release', 'Um release controlado'), L('A change to the engine only counts as live when the server image, the agent configuration and the portal are all updated.', 'Uma mudança no motor só conta como publicada quando a imagem do servidor, a configuração dos agentes e o portal estão todos atualizados.')]
+],
+facts: [['1', L('cloud server per test', 'servidor de nuvem por teste')], ['2', L('lab platforms used for regular practice', 'plataformas de laboratório usadas para prática regular')]] },
+monitoring: { context: L('Three gaps were common across the environments: alerts went only to email, dashboards were built by hand for each customer, and some critical systems had no API to monitor.', 'Três lacunas se repetiam nos ambientes: os alertas iam só por e-mail, os dashboards eram montados à mão para cada cliente e alguns sistemas críticos não tinham API para monitorar.'),
+flow: [
+[L('Collection', 'Coleta'), L('Agents in active mode, SNMP for networks and VPN tunnels, and a read-only collector for backup platforms.', 'Agentes em modo ativo, SNMP para redes e túneis VPN, e um coletor somente leitura para plataformas de backup.')],
+[L('Triggers', 'Triggers'), L('Dependencies from host to switch to edge router, so one failed link produces one alert.', 'Dependências de host para switch e de switch para roteador de borda, para que um link caído gere um único alerta.')],
+[L('Dashboards', 'Dashboards'), L('Generated by Python from shared templates and published through the Grafana API, sized for a 1080p wall screen.', 'Gerados em Python a partir de templates compartilhados e publicados pela API do Grafana, dimensionados para um telão 1080p.')],
+[L('Escalation', 'Escalonamento'), L('Email, then messaging for high severity, then a voice call for critical events that nobody acknowledged.', 'E-mail, depois mensagem para severidade alta, depois ligação de voz para eventos críticos que ninguém confirmou.')]
+],
+facts: [['0', L('inbound ports opened to monitor backups', 'portas de entrada abertas para monitorar backups')], ['8', L('queries at most per wall screen', 'consultas no máximo por telão')], ['10 min', L('interval of the backup collector', 'de intervalo do coletor de backup')], ['4.5:1', L('minimum contrast on status colours', 'de contraste mínimo nas cores de status')]] },
+endpoint: { context: L('Endpoint protection for many customers was managed in its own console, apart from the SOC, so an infected machine and a firewall alert about it were two separate stories.', 'A proteção de endpoint de vários clientes era gerenciada em um console próprio, separado do SOC, e uma máquina infectada e um alerta de firewall sobre ela eram duas histórias separadas.'),
+flow: [
+[L('Collection', 'Coleta'), L('Events are collected from the management platform through its API, on a schedule.', 'Os eventos são coletados da plataforma de gerenciamento pela API dela, de forma agendada.')],
+[L('Normalisation', 'Normalização'), L('Duplicates are removed by event time, and the vendor severities are mapped to the SOC vocabulary.', 'Os duplicados são removidos pelo horário do evento, e as severidades do fabricante são mapeadas para o vocabulário do SOC.')],
+[L('Attribution', 'Atribuição'), L('The alert is attached to the affected device, not to the management server that reported it.', 'O alerta é ligado ao dispositivo afetado, não ao servidor de gerenciamento que o reportou.')],
+[L('Correlation', 'Correlação'), L('The AI analyst has tools to correlate endpoint events with the rest of the case.', 'O analista de IA tem ferramentas para correlacionar eventos de endpoint com o resto do caso.')]
+],
+facts: [] },
+backup: { context: L('The backups existed only in the cloud. Restoring a large virtual machine meant downloading terabytes, and anyone with admin credentials could delete every copy, which is what ransomware groups do first.', 'Os backups existiam só na nuvem. Restaurar uma máquina virtual grande significava baixar terabytes, e qualquer pessoa com credenciais de administrador podia apagar todas as cópias, que é o que grupos de ransomware fazem primeiro.'),
+flow: [
+[L('Backup server', 'Servidor de backup'), L('Protects the production virtual machines of the Hyper-V cluster.', 'Protege as máquinas virtuais de produção do cluster Hyper-V.')],
+[L('Hardened repository', 'Repositório endurecido'), L('A minimal Linux server on XFS with reflink. Every restore point is immutable for 14 days.', 'Um servidor Linux mínimo em XFS com reflink. Cada ponto de restauração fica imutável por 14 dias.')],
+[L('Off-site copy', 'Cópia externa'), L('Copy jobs send every restore point to an encrypted vault, immutable for 7 days.', 'Jobs de cópia enviam cada ponto de restauração para um cofre criptografado, imutável por 7 dias.')],
+[L('Restore area', 'Área de restauração'), L('Instant and file-level recovery land in a separate area, away from production storage.', 'A recuperação instantânea e a de arquivos caem em uma área separada, longe do storage de produção.')],
+[L('Monitoring', 'Monitoramento'), L('Alarms for failed jobs and low space, an RPO alert, and a forecast of when storage runs out.', 'Alarmes para jobs com falha e pouco espaço, um alerta de RPO e a previsão de quando o armazenamento acaba.')]
+],
+facts: [['14d', L('immutable on the local copy', 'de imutabilidade na cópia local')], ['7d', L('immutable off-site', 'de imutabilidade na cópia externa')], ['1 day', L('before the RPO alert fires', 'até o alerta de RPO disparar')], ['4', L('documents delivered, one of them the restore procedure', 'documentos entregues, um deles o procedimento de restauração')]] },
+workplace: { context: L('Customers still had files on a server in the office, mail on local infrastructure and desktops tied to the building.', 'Os clientes ainda tinham arquivos em um servidor no escritório, e-mail em infraestrutura local e desktops presos ao prédio.'),
+flow: [
+[L('Identity', 'Identidade'), L('Accounts and access managed in Entra ID, integrated with Active Directory where it still exists.', 'Contas e acessos gerenciados no Entra ID, integrado ao Active Directory onde ele ainda existe.')],
+[L('Mail', 'E-mail'), L('Mailboxes migrated to Exchange Online.', 'Caixas de correio migradas para o Exchange Online.')],
+[L('Files', 'Arquivos'), L('File servers migrated to SharePoint.', 'Servidores de arquivos migrados para o SharePoint.')],
+[L('Desktops', 'Desktops'), L('Azure Virtual Desktop host pools, with user profiles and application compatibility handled per environment.', 'Host pools do Azure Virtual Desktop, com perfis de usuário e compatibilidade de aplicativos tratados por ambiente.')],
+[L('Devices', 'Dispositivos'), L('Devices and security settings managed through Intune and Microsoft 365.', 'Dispositivos e configurações de segurança gerenciados pelo Intune e pelo Microsoft 365.')]
+],
+facts: [] },
+identity: { context: L('Every user and service authenticated against one physical server that no longer received security updates. A hardware failure would stop all logins, and authentication had to keep working during the move.', 'Todos os usuários e serviços autenticavam em um único servidor físico que não recebia mais atualizações de segurança. Uma falha de hardware pararia todos os logins, e a autenticação precisava continuar funcionando durante a migração.'),
+flow: [
+[L('Foundation', 'Fundação'), L('Resource groups, naming, tags, hub-spoke networks, peering and network security groups.', 'Resource groups, nomenclatura, tags, redes hub-spoke, peering e grupos de segurança de rede.')],
+[L('Connectivity', 'Conectividade'), L('IPsec tunnels from the hub to every site, with one crypto policy.', 'Túneis IPsec do hub para cada site, com uma única política de criptografia.')],
+[L('Hybrid', 'Híbrida'), L('New domain controllers in Azure join the existing domain and replicate everything.', 'Novos controladores de domínio no Azure ingressam no domínio existente e replicam tudo.')],
+[L('Promotion', 'Promoção'), L('All five FSMO roles move to the primary controller in Azure.', 'Os cinco papéis FSMO vão para o controlador principal no Azure.')],
+[L('Validation', 'Validação'), L('The old server is powered off, and logins and DNS are tested from every site.', 'O servidor antigo é desligado, e logins e DNS são testados a partir de cada site.')],
+[L('Decommission', 'Descomissionamento'), L('A written runbook to demote and remove the old server, on the organisation\'s schedule.', 'Um runbook escrito para rebaixar e remover o servidor antigo, no cronograma da organização.')]
+],
+facts: [['2', L('regions, each with its own backup vault', 'regiões, cada uma com seu cofre de backup')], ['6', L('phases, each reversible until the last', 'fases, cada uma reversível até a última')], ['2', L('organisations migrated with the same design', 'organizações migradas com o mesmo desenho')]] },
+perimeter: { context: L('Each customer has its own firewall, its own tunnels and its own history of exceptions. Keeping all of them secure means making them alike where it matters.', 'Cada cliente tem o próprio firewall, os próprios túneis e o próprio histórico de exceções. Manter todos seguros significa deixá-los iguais no que importa.'),
+flow: [
+[L('Policies', 'Políticas'), L('Network security policies on next-generation firewalls from two vendors.', 'Políticas de segurança de rede em firewalls de próxima geração de dois fabricantes.')],
+[L('Site-to-site', 'Site a site'), L('IPsec tunnels between offices and the cloud, with the same documented parameters on every one.', 'Túneis IPsec entre escritórios e a nuvem, com os mesmos parâmetros documentados em todos.')],
+[L('Remote access', 'Acesso remoto'), L('VPN for users who work from outside the office.', 'VPN para usuários que trabalham fora do escritório.')],
+[L('Monitoring', 'Monitoramento'), L('Each tunnel is discovered and monitored through SNMP.', 'Cada túnel é descoberto e monitorado por SNMP.')],
+[L('Logs to the SOC', 'Logs para o SOC'), L('Firewall events feed detection, and the firewall is one of the places where containment acts.', 'Os eventos dos firewalls alimentam a detecção, e o firewall é um dos pontos onde a contenção age.')]
+],
+facts: [['2', L('firewall vendors administered', 'fabricantes de firewall administrados')]] },
+cluster: { context: L('Production ran on one server, with every virtual machine on its local disk. A second server was available, and so was a new storage array.', 'A produção rodava em um servidor, com todas as máquinas virtuais no disco local. Havia um segundo servidor disponível, e um storage novo.'),
+flow: [
+[L('Storage', 'Storage'), L('An array with dual controllers, a RAID group of six disks and two global spares.', 'Um storage com controladoras duplas, um grupo RAID de seis discos e dois spares globais.')],
+[L('Volumes', 'Volumes'), L('A small quorum volume and two large volumes for the virtual machines.', 'Um volume pequeno de quórum e dois volumes grandes para as máquinas virtuais.')],
+[L('Cluster', 'Cluster'), L('Two nodes in an active-active failover cluster, with a dedicated live migration network.', 'Dois nós em um cluster de failover ativo-ativo, com rede dedicada de live migration.')],
+[L('Migration', 'Migração'), L('The virtual machines moved from the local disk to the shared volumes and were split between the two nodes.', 'As máquinas virtuais saíram do disco local para os volumes compartilhados e foram divididas entre os dois nós.')],
+[L('Operation', 'Operação'), L('Full project documentation, and a change record for every intervention since.', 'Documentação completa do projeto, e um registro de mudança para cada intervenção desde então.')]
+],
+facts: [['11', L('virtual machines on the cluster', 'máquinas virtuais no cluster')], ['2', L('nodes, active-active', 'nós, ativo-ativo')], ['2', L('global spare disks', 'discos de spare global')], ['3', L('volumes, one of them the quorum', 'volumes, um deles o quórum')]] },
+lab: { context: L('The first version of my lab worked once and had problems I would not accept in production. I rewrote it and kept the list of what changed and why.', 'A primeira versão do meu laboratório funcionou uma vez e tinha problemas que eu não aceitaria em produção. Reescrevi e guardei a lista do que mudou e por quê.'),
+flow: [
+[L('Terraform', 'Terraform'), L('A security monitoring server on Azure, with the network locked to known addresses.', 'Um servidor de monitoramento de segurança no Azure, com a rede restrita a endereços conhecidos.')],
+[L('Vagrant', 'Vagrant'), L('A local lab with four nodes: control, application, database and security monitoring.', 'Um laboratório local com quatro nós: controle, aplicação, banco de dados e monitoramento de segurança.')],
+[L('Ansible', 'Ansible'), L('A baseline role and a playbook for each tier, safe to run more than once.', 'Uma role de base e um playbook para cada camada, seguros para rodar mais de uma vez.')]
+],
+facts: [['8', L('corrections to the first version', 'correções na primeira versão')], ['4', L('nodes in the local lab', 'nós no laboratório local')]] },
+wire: { context: L('I started in 2017 maintaining computers, and then spent four years on site: cabling, network points, servers and the people who used them.', 'Comecei em 2017 fazendo manutenção de computadores, e depois passei quatro anos em campo: cabeamento, pontos de rede, servidores e as pessoas que os usavam.'),
+flow: [
+[L('Repair bench', 'Bancada'), L('Maintenance of desktops and laptops.', 'Manutenção de desktops e notebooks.')],
+[L('Networks', 'Redes'), L('Configuration, deployment and management of network infrastructure and structured cabling, with Linux and Windows servers.', 'Configuração, implantação e gestão de infraestrutura de rede e cabeamento estruturado, com servidores Linux e Windows.')],
+[L('Field support', 'Suporte de campo'), L('On-site support across the units of a healthcare network: network points, equipment and computers joined to the domain.', 'Suporte presencial nas unidades de uma rede de saúde: pontos de rede, equipamentos e computadores ingressados no domínio.')]
+],
+facts: [['2017', L('the year I started', 'o ano em que comecei')]] }
+};
+
+const generic = {
+soc: [L('Security operations', 'Operações de segurança'), L('Detection, triage, case management and incident response, including a SOC service designed and built from scratch.', 'Detecção, triagem, gestão de casos e resposta a incidentes, incluindo um serviço de SOC desenhado e construído do zero.'), null],
+offsec: [L('Offensive security', 'Segurança ofensiva'), L('Penetration tests and vulnerability assessments, incident reports with forensic analysis, and regular practice in labs.', 'Testes de invasão e análises de vulnerabilidade, relatórios de incidente com análise forense e prática regular em laboratórios.'), null],
+lab: [L('Automation and infrastructure as code', 'Automação e infraestrutura como código'), L('Scripts that remove routine work, infrastructure defined in code, and AI agents working inside limits a person can audit.', 'Scripts que eliminam rotina, infraestrutura definida em código e agentes de IA trabalhando dentro de limites que uma pessoa consegue auditar.'), null],
+monitoring: [L('Monitoring and alerting', 'Monitoramento e alertas'), L('Monitoring of servers, networks, tunnels, backups and cloud resources, with dashboards for a NOC and alerts that reach a person.', 'Monitoramento de servidores, redes, túneis, backups e recursos em nuvem, com dashboards para NOC e alertas que chegam a uma pessoa.'), null],
+endpoint: [L('Endpoint protection', 'Proteção de endpoint'), L('Endpoint protection managed for many organisations, with its alerts feeding security operations.', 'Proteção de endpoint gerenciada para várias organizações, com os alertas dela alimentando as operações de segurança.'), null],
+drp: [L('Disaster recovery planning', 'Planejamento de recuperação de desastre'), L('Plans that say, for each asset, what stops if it fails, what covers it and how long recovery takes.', 'Planos que dizem, para cada ativo, o que para se ele falhar, o que cobre a falha e quanto tempo leva a recuperação.'), null],
+backup: [L('Backup and recovery', 'Backup e recuperação'), L('Backup platforms from design to restore, on premises and in the cloud.', 'Plataformas de backup do desenho à restauração, no local e na nuvem.'),
+[L('At least one copy that admin credentials cannot delete.', 'Pelo menos uma cópia que credenciais de administrador não conseguem apagar.'), L('A second copy outside the building.', 'Uma segunda cópia fora do prédio.'), L('A written restore procedure, handed to the team.', 'Um procedimento de restauração escrito, entregue à equipe.')]],
+workplace: [L('Cloud and workplace', 'Cloud e ambiente de trabalho'), L('Azure networks and virtual machines, virtual desktops, and Microsoft 365 for mail, files and devices.', 'Redes e máquinas virtuais no Azure, desktops virtuais e Microsoft 365 para e-mail, arquivos e dispositivos.'),
+[L('Networks, names and tags defined before the first resource is created.', 'Redes, nomes e tags definidos antes de criar o primeiro recurso.'), L('Workloads leave local servers in stages.', 'As cargas saem dos servidores locais em etapas.'), L('Identity and devices managed in one place.', 'Identidade e dispositivos gerenciados em um só lugar.')]],
+identity: [L('Identity and directory', 'Identidade e diretório'), L('Active Directory, DNS and group policy on premises, Entra ID in the cloud, and the hybrid between them.', 'Active Directory, DNS e políticas de grupo no local, Entra ID na nuvem e o híbrido entre os dois.'),
+[L('No environment depends on a single domain controller.', 'Nenhum ambiente depende de um único controlador de domínio.'), L('Sites and subnets are mapped, so people log in to the nearest controller.', 'Sites e sub-redes são mapeados, para que as pessoas autentiquem no controlador mais próximo.'), L('Migrations run in phases that can be rolled back.', 'Migrações rodam em fases que podem ser revertidas.')]],
+perimeter: [L('Networks, firewalls and VPNs', 'Redes, firewalls e VPNs'), L('Switching and routing, next-generation firewalls, site-to-site and remote-access VPNs, and SD-WAN.', 'Switching e roteamento, firewalls de próxima geração, VPNs site a site e de acesso remoto, e SD-WAN.'), null],
+cluster: [L('Servers, virtualization and storage', 'Servidores, virtualização e storage'), L('Windows and Linux servers, virtualization clusters with failover, and the storage behind them.', 'Servidores Windows e Linux, clusters de virtualização com failover e o storage por trás deles.'),
+[L('No production workload on a single server.', 'Nenhuma carga de produção em um único servidor.'), L('Storage with redundant controllers and spare disks.', 'Storage com controladoras redundantes e discos de spare.'), L('Every change to shared infrastructure is recorded.', 'Toda mudança em infraestrutura compartilhada é registrada.')]],
+wire: [L('Hardware and cabling', 'Hardware e cabeamento'), L('The physical layer of an office: computers, printers, network points and structured cabling.', 'A camada física de um escritório: computadores, impressoras, pontos de rede e cabeamento estruturado.'),
+[L('Maintenance of computers and peripherals.', 'Manutenção de computadores e periféricos.'), L('Installation and relocation of network points.', 'Instalação e remanejamento de pontos de rede.'), L('A report for every service.', 'Um relatório a cada atendimento.')]]
+};
+const stacks = {
+soc: L('SIEM (Wazuh) · Orchestration and case management · Response playbooks (Shuffle) · AI triage · MITRE ATT&CK', 'SIEM (Wazuh) · Orquestração e gestão de casos · Playbooks de resposta (Shuffle) · Triagem por IA · MITRE ATT&CK'), offsec: 'Hack The Box · OffSec Proving Grounds · Python',
+lab: 'Terraform · Ansible · Python · PowerShell · Bash', monitoring: 'Zabbix · Grafana · SNMP · Python · PowerShell',
+endpoint: 'Kaspersky Security Center · EDR · MDR', drp: L('Inventory · Impact analysis · RTO and RPO · Recovery levels', 'Inventário · Análise de impacto · RTO e RPO · Níveis de recuperação'),
+backup: 'Veeam · Acronis · MABS · Azure Site Recovery', workplace: 'Azure · Azure Virtual Desktop · Microsoft 365 · SharePoint · Intune',
+identity: 'AD DS · DNS · GPO · Entra ID', perimeter: 'FortiGate · SonicWall · IPsec · SSL VPN · BGP · OSPF · VLAN · SD-WAN',
+cluster: 'Windows Server · Linux · Hyper-V · VMware · Docker', wire: L('Desktops · Printers · Structured cabling', 'Desktops · Impressoras · Cabeamento estruturado')
+};
+const gain = {
+soc: ['30+', L('automated response playbooks, so routine containment is one click by an analyst instead of manual steps', 'playbooks de resposta automatizados: a contenção de rotina vira um clique do analista, em vez de passos manuais')],
+offsec: ['1:1', L('one isolated environment per test, so two organisations never share tools or data', 'um ambiente isolado por teste: duas organizações nunca dividem ferramentas ou dados')],
+lab: ['1', L('command to rebuild an environment, and it can be run again safely', 'comando para reconstruir um ambiente, e ele pode ser rodado de novo com segurança')],
+monitoring: ['24/7', L('a critical alert reaches a person at any hour, instead of waiting in an inbox until morning', 'um alerta crítico chega a uma pessoa a qualquer hora, em vez de esperar na caixa de e-mail até de manhã')],
+endpoint: ['1', L('place to see the endpoint alert and the network alert about the same machine, instead of two consoles', 'lugar para ver o alerta de endpoint e o de rede sobre a mesma máquina, em vez de dois consoles')],
+drp: ['0', L('assets left without a written answer to "what if this fails?"', 'ativos sem uma resposta por escrito para "e se isso falhar?"')],
+backup: ['2', L('backup copies that stolen admin credentials cannot delete, one of them outside the building', 'cópias de backup que credenciais de administrador roubadas não conseguem apagar, uma delas fora do prédio')],
+workplace: ['3', L('workloads that stop depending on a server in the office: files, mail and desktops', 'cargas que deixam de depender de um servidor no escritório: arquivos, e-mail e desktops')],
+identity: ['0', L('logins that depend on a single server', 'logins que dependem de um único servidor')],
+perimeter: ['100%', L('of site-to-site tunnels monitored, so a drop is seen before the branch calls', 'dos túneis site a site monitorados: a queda é vista antes de a filial ligar')],
+cluster: ['1 → 2', L('servers production can run on, so a hardware failure no longer stops the company', 'servidores em que a produção consegue rodar: uma falha de hardware não para mais a empresa')],
+wire: ['4', L('years on site, close to users and hardware, before moving to operations', 'anos em campo, perto de usuários e hardware, antes de ir para a operação')]
+};
+const layerOrder = ['soc', 'offsec', 'lab', 'monitoring', 'endpoint', 'drp', 'backup', 'workplace', 'identity', 'perimeter', 'cluster', 'wire'];
+data.sort((a, b) => layerOrder.indexOf(a.id) - layerOrder.indexOf(b.id));
+const all = data.map((d, i) => {
+const on = d.id === picked;
+return Object.assign({}, d, {
+num: ((data.length - i) < 10 ? '0' : '') + (data.length - i),
+hasCases: (casesData[d.id] || []).length > 0,
+title: generic[d.id][0], summary: generic[d.id][1], short: generic[d.id][0], coverage: stacks[d.id], gainFigure: gain[d.id][0], gainLabel: gain[d.id][1],
+points: d.points.map((text, k) => ({ n: String(k + 1), text })),
+approach: (generic[d.id][2] || d.points).map((text, k) => ({ n: String(k + 1), text })),
+cases: (casesData[d.id] || []).map((c) => ({ problem: c[0], solution: c[1] })),
+hasRepo: !!d.repo,
+context: (caseExtra[d.id] || {}).context || '',
+facts: ((caseExtra[d.id] || {}).facts || []).map((f) => ({ value: f[0], label: f[1] })),
+pick: () => this.setState({ picked: d.id }),
+pressed: on ? 'true' : 'false',
+top: (i * 50) + 'px', z: 20 - i,
+lift: on ? 'translateY(-7px)' : 'none',
+topFill: on ? '#e6eef5' : '#ffffff',
+stroke: on ? '#1e4b6e' : '#a9afb7',
+fill: on ? '#eef3f7' : '#ffffff',
+dotR: on ? 5 : 2.4,
+dotFill: on ? '#b8622a' : '#15181d',
+verbColor: on ? '#1e4b6e' : '#15181d'
+});
+});
+
+const selIdx = Math.max(0, all.findIndex((d) => d.id === picked));
+const selObj = all[selIdx];
+const nextObj = all[(selIdx - 1 + all.length) % all.length];
+const stages = (((caseExtra[selObj.id] || {}).flow) || []).map((f, i) => {
+const on = i === Math.min(stageIdx, (caseExtra[selObj.id].flow.length - 1));
+return { n: '0' + (i + 1), name: f[0], text: f[1], pick: () => this.setState({ stage: i }), pressed: on ? 'true' : 'false', bg: on ? '#15181d' : '#ffffff', fg: on ? '#fbfaf7' : '#15181d', border: on ? '#15181d' : '#cfd3d8' };
+});
+const areaIdx = st.area === undefined ? 9 : st.area;
+const areasData = [
+[L('Hardware and cabling', 'Hardware e cabeamento'), L('Where I started: maintenance of computers and structured cabling for networks.', 'Onde comecei: manutenção de computadores e cabeamento estruturado de redes.'), L('Desktops · notebooks · structured cabling', 'Desktops · notebooks · cabeamento estruturado'), 'Furukawa Certified Professional'],
+[L('Networks and SD-WAN', 'Redes e SD-WAN'), L('Deployment and management of network infrastructure, site-to-site VPN tunnels between offices and cloud, and SD-WAN.', 'Implantação e gestão de infraestrutura de rede, túneis VPN site a site entre escritórios e nuvem, e SD-WAN.'), 'IPsec · BGP · OSPF · VLAN · HPE Aruba SD-WAN', L('Aruba SD-WAN certifications', 'Certificações Aruba SD-WAN')],
+[L('Firewalls', 'Firewalls'), L('Implementation and administration of customer firewalls, and their logs as a source for the SOC.', 'Implantação e administração de firewalls de clientes, e os logs deles como fonte para o SOC.'), 'FortiGate · SonicWall', 'FortiGate 7.4 Administrator'],
+[L('Servers and virtualization', 'Servidores e virtualização'), L('Windows and Linux servers, virtualization clusters and the storage behind them.', 'Servidores Windows e Linux, clusters de virtualização e o storage por trás deles.'), 'Windows Server · Linux · Hyper-V · VMware · Docker · Dell PowerVault', L('Backup and recovery case', 'Caso de backup e recuperação')],
+[L('Identity', 'Identidade'), L('Active Directory, DNS and group policy, and the migration of a whole domain to Azure.', 'Active Directory, DNS e políticas de grupo, e a migração de um domínio inteiro para o Azure.'), 'AD DS · DNS · GPO · FSMO', L('Identity migration case', 'Caso de migração de identidade')],
+[L('Cloud', 'Cloud'), L('Azure networks, virtual machines and virtual desktops, plus email migrations to Microsoft 365 and file servers to SharePoint.', 'Redes, máquinas virtuais e desktops virtuais no Azure, além de migrações de e-mail para Microsoft 365 e de servidores de arquivos para SharePoint.'), 'Azure · Entra ID · Azure Virtual Desktop · Microsoft 365 · Intune · SharePoint', L('Four Azure certifications, one at Expert level', 'Quatro certificações Azure, uma de nível Expert')],
+[L('Backup and recovery', 'Backup e recuperação'), L('Backup platforms from design to restore procedure, on premises and in the cloud.', 'Plataformas de backup do desenho ao procedimento de restauração, no local e na nuvem.'), 'Veeam · Acronis · MABS · Azure Site Recovery', L('Backup and recovery case', 'Caso de backup e recuperação')],
+[L('Endpoint protection', 'Proteção de endpoint'), L('Administration of endpoint protection for many customers, and its alerts integrated into the SOC.', 'Administração de proteção de endpoint para vários clientes, e os alertas dela integrados ao SOC.'), 'Kaspersky Security Center · EDR · MDR', L('Three Kaspersky certifications', 'Três certificações Kaspersky')],
+[L('Monitoring', 'Monitoramento'), L('Monitoring of servers, networks, tunnels and backups, with dashboards for a NOC and alerts that reach a person.', 'Monitoramento de servidores, redes, túneis e backups, com dashboards para NOC e alertas que chegam a uma pessoa.'), 'Zabbix · Grafana · Python · PowerShell', L('Monitoring case', 'Caso de monitoramento')],
+[L('Security operations', 'Operações de segurança'), L('Detection, triage, case management and incident response, first supervising a NOC/SOC team and now designing a multi-tenant SOC.', 'Detecção, triagem, gestão de casos e resposta a incidentes, primeiro supervisionando uma equipe de NOC/SOC e hoje desenhando um SOC multi-cliente.'), 'Wazuh · Shuffle · SIEM · MITRE ATT&CK', L('SOC platform case', 'Caso da plataforma de SOC')],
+[L('Offensive security', 'Segurança ofensiva'), L('Vulnerability assessments and penetration tests on internal assets, and regular practice in offensive security labs.', 'Análises de vulnerabilidade e testes de invasão em ativos internos, e prática regular em laboratórios de segurança ofensiva.'), 'Hack The Box · OffSec Proving Grounds', L('Pentest Profissional (SYCP), CEH in progress', 'Pentest Profissional (SYCP), CEH em andamento')],
+[L('Automation and AI', 'Automação e IA'), L('Scripts that remove routine work, infrastructure as code, and AI agents working inside limits I can audit.', 'Scripts que eliminam rotina, infraestrutura como código e agentes de IA trabalhando dentro de limites que consigo auditar.'), 'Python · PowerShell · Bash · Terraform · Ansible', L('Automation lab and my own projects', 'Laboratório de automação e projetos próprios')]
+];
+const areas = areasData.map((a, i) => {
+const on = i === areaIdx;
+return {
+n: (i < 9 ? '0' : '') + (i + 1), name: a[0], text: a[1], tools: a[2], proof: a[3],
+pick: () => this.setState({ area: i }),
+pressed: on ? 'true' : 'false',
+bg: on ? '#15181d' : '#ffffff',
+fg: on ? '#fbfaf7' : '#15181d',
+border: on ? '#15181d' : '#cfd3d8'
+};
+});
+
+const venIdx = st.venture === undefined ? 0 : st.venture;
+const venturesData = [
+{ status: L('In production', 'Em produção'), name: L('An AI analyst for a SOC', 'Um analista de IA para um SOC'),
+what: L('An agent that investigates and triages every security alert, inside limits a person can audit.', 'Um agente que investiga e faz a triagem de cada alerta de segurança, dentro de limites que uma pessoa consegue auditar.'),
+cases: [
+[L('A model can be wrong with full confidence.', 'Um modelo pode errar com toda a confiança.'), L('Its output passes deterministic checks before anything is written, and it cannot run containment.', 'A saída dele passa por verificações determinísticas antes de qualquer gravação, e ele não consegue executar contenção.')],
+[L('My first agent worked, with 293 tests, but I was rebuilding a whole platform around it.', 'Meu primeiro agente funcionava, com 293 testes, mas eu estava reconstruindo uma plataforma inteira em volta dele.'), L('Four days after go-live I replaced it with an open-source platform and kept the checks.', 'Quatro dias depois de entrar no ar, troquei por uma plataforma open source e mantive as verificações.')],
+[L('When the analyst and the AI disagreed, the lesson was lost.', 'Quando o analista e a IA discordavam, o aprendizado se perdia.'), L('The analyst records the reason in the agent\'s long-term memory.', 'O analista registra o motivo na memória de longo prazo do agente.')]
+] },
+{ status: L('In use', 'Em uso'), name: L('A firewall assistant in plain language', 'Um assistente de firewall em linguagem natural'),
+what: L('The analyst describes the problem, such as a branch with no internet, and the assistant queries the firewall and returns a diagnosis with the data behind it.', 'O analista descreve o problema, como uma filial sem internet, e o assistente consulta o firewall e devolve o diagnóstico com os dados que o sustentam.'),
+cases: [
+[L('A model that can change a customer firewall is a risk.', 'Um modelo que consegue alterar o firewall de um cliente é um risco.'), L('The tools are read-only by construction. A person makes every change.', 'As ferramentas são somente de consulta, por construção. Toda mudança é feita por uma pessoa.')],
+[L('A malformed prompt could reach another customer\'s firewall.', 'Um prompt malformado poderia chegar ao firewall de outro cliente.'), L('The model never chooses the customer. It only sees the firewall the analyst selected.', 'O modelo nunca escolhe o cliente. Ele só enxerga o firewall que o analista selecionou.')],
+[L('A rule list with hundreds of items does not fit in the model\'s context.', 'Uma lista de regras com centenas de itens não cabe no contexto do modelo.'), L('The model gets one compact line per item, and the analyst gets the full data in a side panel.', 'O modelo recebe uma linha compacta por item, e o analista recebe o dado completo em um painel ao lado.')],
+[L('Diagnosis depended on who picked up the ticket.', 'O diagnóstico dependia de quem pegava o chamado.'), L('The senior analysts\' procedures became steps the assistant follows.', 'Os procedimentos dos analistas seniores viraram passos que o assistente segue.')]
+] },
+{ status: L('In use', 'Em uso'), name: L('Personal routines and social media, run by agents', 'Rotinas pessoais e redes sociais, tocadas por agentes'),
+what: L('Agents that take care of recurring routines and prepare what I post on social media.', 'Agentes que cuidam de rotinas recorrentes e preparam o que eu publico nas redes sociais.'),
+cases: [
+[L('The same routines took time every week.', 'As mesmas rotinas tomavam tempo toda semana.'), L('Scheduled agents run them and report what they did.', 'Agentes agendados executam e relatam o que fizeram.')],
+[L('Nothing should be published in my name without me.', 'Nada deve ser publicado em meu nome sem mim.'), L('The agents draft, and I approve every post before it goes out.', 'Os agentes redigem, e eu aprovo cada post antes de sair.')]
+] },
+{ status: L('Active', 'Ativo'), name: L('Penetration testing run by AI agents', 'Pentest executado por agentes de IA'),
+what: L('A platform where a team of AI agents runs a penetration test from start to report.', 'Uma plataforma em que uma equipe de agentes de IA executa um teste de invasão do início ao relatório.'),
+cases: [
+[L('Intrusive tools for different customers must never share an environment.', 'Ferramentas intrusivas de clientes diferentes nunca podem dividir o mesmo ambiente.'), L('Each test runs on its own cloud server, created on demand for that test.', 'Cada teste roda em um servidor de nuvem próprio, criado sob demanda para aquele teste.')],
+[L('Model cost grows with every step an agent takes.', 'O custo do modelo cresce a cada passo de um agente.'), L('A lighter model for the high-volume agents, and a stronger one only where the reasoning needs it.', 'Um modelo mais leve para os agentes de alto volume, e um mais forte só onde o raciocínio exige.')],
+[L('A change could be live in one place and stale in another.', 'Uma mudança podia estar no ar em um lugar e desatualizada em outro.'), L('A release runbook that covers the server image, the agent configuration and the portal.', 'Um runbook de release que cobre a imagem do servidor, a configuração dos agentes e o portal.')]
+] },
+{ status: L('Pre-launch', 'Pré-lançamento'), name: L('Marketing automation with AI agents', 'Automação de marketing com agentes de IA'),
+what: L('A product of my own that automates social media and marketing with AI agents.', 'Um produto próprio que automatiza redes sociais e marketing com agentes de IA.'),
+cases: [
+[L('A product run by one person still needs sales, service and support.', 'Um produto tocado por uma pessoa ainda precisa de vendas, atendimento e suporte.'), L('In progress: a team of agents for those roles, coordinating without supervision.', 'Em andamento: uma equipe de agentes para esses papéis, coordenando-se sem supervisão.')]
+] },
+{ status: L('Discontinued', 'Descontinuado'), name: L('Legal drafting with AI agents', 'Minutas jurídicas com agentes de IA'),
+what: L('A system for lawyers in which AI agents drafted documents and defences.', 'Um sistema para advogados em que agentes de IA redigiam minutas e defesas.'),
+cases: [
+[L('A draft written by a model still needs someone accountable for it.', 'Uma minuta escrita por um modelo ainda precisa de alguém que responda por ela.'), L('The agents escalated to human specialists.', 'Os agentes escalavam para especialistas humanos.')]
+] },
+{ status: L('Never launched', 'Nunca lançado'), name: L('A monitoring stack deployed by script', 'Uma stack de monitoramento implantada por script'),
+what: L('Scripts that install and configure a whole monitoring stack automatically.', 'Scripts que instalam e configuram automaticamente uma stack inteira de monitoramento.'),
+cases: [
+[L('Every new deployment repeated the same manual steps.', 'Cada nova implantação repetia os mesmos passos manuais.'), L('The steps became scripts that deploy the stack from start to finish.', 'Os passos viraram scripts que implantam a stack do início ao fim.')]
+] }
+];
+const ventures = venturesData.map((v, i) => {
+const on = i === venIdx;
+return Object.assign({}, v, {
+cases: v.cases.map((c) => ({ problem: c[0], solution: c[1] })),
+pick: () => this.setState({ venture: i }),
+pressed: on ? 'true' : 'false',
+bg: on ? '#15181d' : '#ffffff',
+fg: on ? '#fbfaf7' : '#15181d',
+border: on ? '#15181d' : '#cfd3d8'
+});
+});
+
+const roleIdx = st.role === undefined ? 0 : st.role;
+const ax0 = 2017, ax1 = 2027;
+const pos = (v) => (((v - ax0) / (ax1 - ax0)) * 100).toFixed(2) + '%';
+const layerName = {};
+all.forEach((d) => { layerName[d.id] = { num: d.num, name: d.title }; });
+const chHands = L('Chapter 1 · Hands on the hardware', 'Capítulo 1 · Mão no hardware');
+const chOps = L('Chapter 2 · Running operations', 'Capítulo 2 · Operação no dia a dia');
+const chDesign = L('Chapter 3 · Designing systems', 'Capítulo 3 · Desenhando sistemas');
+const pathData = [
+{ title: 'IT Security Specialist', org: L('Managed security services provider', 'Provedor de serviços gerenciados de segurança'), years: L('Dec 2022 – present', 'dez 2022 – atual'), duration: L('4 years', '4 anos'), from: 2022.92, to: 2026.9, chapter: chDesign, gained: ['workplace', 'drp'], total: 12,
+text: L('Designed and built the company SOC service from scratch. Alongside it: Azure and hybrid identity, Azure Virtual Desktop, customer firewalls and VPNs, backup and disaster recovery, monitoring with automated escalation, and migrations to Microsoft 365. This is where every layer came together.', 'Desenhei e construí do zero o serviço de SOC da empresa. Em paralelo: Azure e identidade híbrida, Azure Virtual Desktop, firewalls e VPNs de clientes, backup e recuperação de desastre, monitoramento com escalonamento automático e migrações para Microsoft 365. Foi aqui que todas as camadas se juntaram.') },
+{ title: 'NOC/SOC Supervisor', org: 'Talkcommunications', years: L('May 2022 – Dec 2022', 'mai 2022 – dez 2022'), duration: L('8 months', '8 meses'), from: 2022.33, to: 2022.92, chapter: chOps, gained: ['monitoring', 'soc'], total: 10,
+text: L('Supervised the NOC/SOC department: 11 level 1 analysts covering IT, telecom, products, NOC and SOC. Monitored company and customer assets around the clock, gave first-line incident support and reported to senior leadership.', 'Supervisão do departamento de NOC/SOC: 11 analistas de nível 1 cobrindo TI, telecom, produtos, NOC e SOC. Monitoramento 24/7 dos ativos da empresa e dos clientes, primeiro atendimento a incidentes e relatórios para a diretoria.') },
+{ title: 'IT Analyst', org: 'Talkcommunications', years: L('Aug 2021 – May 2022', 'ago 2021 – mai 2022'), duration: L('10 months', '10 meses'), from: 2021.58, to: 2022.33, chapter: chOps, gained: ['backup', 'endpoint', 'lab', 'offsec'], total: 8,
+text: L('Managed the company infrastructure: AD, DNS, GPOs, firewall, WSUS, antivirus, SIEM and backups. Wrote incident response reports, ran vulnerability assessments and penetration tests on internal assets, and automated routine work in Bash, PowerShell and Python.', 'Gestão da infraestrutura da empresa: AD, DNS, GPOs, firewall, WSUS, antivírus, SIEM e backups. Relatórios de resposta a incidentes, análises de vulnerabilidade e testes de invasão em ativos internos, e automação de rotinas em Bash, PowerShell e Python.') },
+{ title: 'Technical Support Analyst', org: 'Stefanini', years: L('Oct 2020 – Aug 2021', 'out 2020 – ago 2021'), duration: L('11 months', '11 meses'), from: 2020.75, to: 2021.58, chapter: chHands, gained: ['identity'], total: 4,
+text: L('Field support across the units of a healthcare network: network points, equipment maintenance, computers joined to Active Directory, and a report for every visit.', 'Suporte de campo nas unidades de uma rede de saúde: pontos de rede, manutenção de equipamentos, computadores ingressados no Active Directory e um relatório a cada atendimento.') },
+{ title: 'Technical Support Analyst', org: 'Dalth Soluções em Informática', years: L('Apr 2018 – Aug 2020', 'abr 2018 – ago 2020'), duration: L('2 years 5 months', '2 anos e 5 meses'), from: 2018.25, to: 2020.6, chapter: chHands, gained: ['cluster', 'perimeter'], total: 3,
+text: L('Configured, deployed and managed network infrastructure and cabling, Linux and Windows servers and user access control, with software and hardware support.', 'Configuração, implantação e gestão de infraestrutura de rede e cabeamento, servidores Linux e Windows e controle de acesso de usuários, com suporte de software e hardware.') },
+{ title: 'IT Intern', org: 'Lan house', years: L('Jan 2017 – Apr 2018', 'jan 2017 – abr 2018'), duration: L('1 year 4 months', '1 ano e 4 meses'), from: 2017, to: 2018.25, chapter: chHands, gained: ['wire'], total: 1,
+text: L('Maintenance of desktops and laptops, and customer service.', 'Manutenção de desktops e notebooks e atendimento ao cliente.') }
+];
+const roles = pathData.map((r, i) => {
+const on = i === roleIdx;
+return Object.assign({}, r, {
+pick: () => this.setState({ role: i }),
+pressed: on ? 'true' : 'false',
+left: pos(r.from), width: (((r.to - r.from) / (ax1 - ax0)) * 100).toFixed(2) + '%',
+bar: on ? '#1e4b6e' : '#15181d', color: on ? '#1e4b6e' : '#15181d', bg: on ? '#ffffff' : 'transparent',
+gained: r.gained.map((id) => layerName[id]).sort((x, y) => (x.num < y.num ? -1 : 1)),
+cells: Array.from({ length: 12 }, (_, k) => ({ bg: k < r.total ? (k >= r.total - r.gained.length ? '#b8622a' : '#15181d') : '#e9e7e1' }))
+});
+});
+const ticks = [2017, 2019, 2021, 2023, 2025].map((y) => ({ year: String(y), left: pos(y) }));
+
+const chaptersData = [
+{ years: '2017 – 2021', name: L('Hands on the hardware', 'Mão no hardware'),
+lead: L('I started by fixing computers, then cabling networks and looking after servers and users on site.', 'Comecei consertando computadores, depois cabeando redes e cuidando de servidores e usuários no local.'),
+roles: [
+{ title: 'Technical Support Analyst', org: 'Stefanini', years: L('Oct 2020 – Aug 2021', 'out 2020 – ago 2021'), text: L('Field support across the units of a healthcare network: network points, equipment maintenance, computers joined to Active Directory, and a report for every visit.', 'Suporte de campo nas unidades de uma rede de saúde: pontos de rede, manutenção de equipamentos, computadores ingressados no Active Directory e um relatório a cada atendimento.') },
+{ title: 'Technical Support Analyst', org: 'Dalth Soluções em Informática', years: L('Apr 2018 – Aug 2020', 'abr 2018 – ago 2020'), text: L('Configured, deployed and managed network infrastructure and cabling, Linux and Windows servers and user access control, with software and hardware support.', 'Configuração, implantação e gestão de infraestrutura de rede e cabeamento, servidores Linux e Windows e controle de acesso de usuários, com suporte de software e hardware.') },
+{ title: 'IT Intern', org: 'Lan house', years: L('Jan 2017 – Apr 2018', 'jan 2017 – abr 2018'), text: L('Maintenance of desktops and laptops, and customer service.', 'Manutenção de desktops e notebooks e atendimento ao cliente.') }
+] },
+{ years: '2021 – 2022', name: L('Running operations', 'Operação no dia a dia'),
+lead: L('One company, two roles: first the whole infrastructure, then the team that watched it.', 'Uma empresa, dois cargos: primeiro a infraestrutura inteira, depois a equipe que a monitorava.'),
+roles: [
+{ title: 'NOC/SOC Supervisor', org: 'Talkcommunications', years: L('May 2022 – Dec 2022', 'mai 2022 – dez 2022'), text: L('Supervised the NOC/SOC department: 11 level 1 analysts covering IT, telecom, products, NOC and SOC. Monitored company and customer assets around the clock, gave first-line incident support and reported to senior leadership.', 'Supervisão do departamento de NOC/SOC: 11 analistas de nível 1 cobrindo TI, telecom, produtos, NOC e SOC. Monitoramento 24/7 dos ativos da empresa e dos clientes, primeiro atendimento a incidentes e relatórios para a diretoria.') },
+{ title: 'IT Analyst', org: 'Talkcommunications', years: L('Aug 2021 – May 2022', 'ago 2021 – mai 2022'), text: L('Managed the company infrastructure: AD, DNS, GPOs, firewall, WSUS, antivirus, SIEM and backups. Wrote incident response reports, ran vulnerability assessments and penetration tests on internal assets, and automated routine work in Bash, PowerShell and Python.', 'Gestão da infraestrutura da empresa: AD, DNS, GPOs, firewall, WSUS, antivírus, SIEM e backups. Relatórios de resposta a incidentes, análises de vulnerabilidade e testes de invasão em ativos internos, e automação de rotinas em Bash, PowerShell e Python.') }
+] },
+{ years: L('2022 – today', '2022 – hoje'), name: L('Designing systems', 'Desenhando sistemas'),
+lead: L('Today I design the layers above and run them in production for the customers of a managed security provider.', 'Hoje projeto as camadas acima e as opero em produção para os clientes de um provedor de segurança gerenciada.'),
+roles: [
+{ title: 'IT Security Specialist', org: L('Managed security services provider', 'Provedor de serviços gerenciados de segurança'), years: L('Dec 2022 – present', 'dez 2022 – atual'), text: L('Designed and built the company SOC service from scratch. Alongside it: Azure and hybrid identity, Azure Virtual Desktop, customer firewalls and VPNs, backup and disaster recovery, monitoring with automated escalation, and migrations to Microsoft 365.', 'Desenhei e construí do zero o serviço de SOC da empresa. Em paralelo: Azure e identidade híbrida, Azure Virtual Desktop, firewalls e VPNs de clientes, backup e recuperação de desastre, monitoramento com escalonamento automático e migrações para Microsoft 365.') }
+] }
+];
+const chapters = chaptersData.map((c, i) => {
+const on = i === chIdx;
+return Object.assign({}, c, {
+n: '0' + (i + 1),
+pick: () => this.setState({ chapter: i }),
+pressed: on ? 'true' : 'false',
+bg: on ? '#15181d' : '#ffffff',
+fg: on ? '#fbfaf7' : '#15181d',
+border: on ? '#15181d' : '#cfd3d8'
+});
+});
+
+const LV = {
+expert: L('Expert', 'Expert'), specialty: L('Specialty', 'Especialidade'), associate: L('Associate', 'Associate'),
+fund: L('Fundamentals', 'Fundamentos'), admin: L('Administrator', 'Administrador'), prof: L('Professional', 'Profissional'),
+course: L('Course', 'Curso'), partner: L('Partner program', 'Programa de parceiros'), progress: L('In progress', 'Em andamento')
+};
+const certData = [
+{ g: 'ms', code: 'AZ-305', name: 'Azure Solutions Architect Expert', issuer: 'Microsoft', year: '2025', lv: 'expert', top: true },
+{ g: 'ms', code: 'AZ-140', name: 'Azure Virtual Desktop Specialty', issuer: 'Microsoft', year: '2025', lv: 'specialty', top: true },
+{ g: 'ms', code: 'AZ-700', name: 'Azure Network Engineer Associate', issuer: 'Microsoft', year: '2025', lv: 'associate', top: true },
+{ g: 'ms', code: 'AZ-104', name: 'Azure Administrator Associate', issuer: 'Microsoft', year: '2024', lv: 'associate', top: true },
+{ g: 'ms', code: 'AZ-900', name: 'Azure Fundamentals', issuer: 'Microsoft', year: '2024', lv: 'fund' },
+{ g: 'ms', code: 'MS-900', name: 'Microsoft 365 Fundamentals', issuer: 'Microsoft', year: '2024', lv: 'fund' },
+{ g: 'net', code: 'FortiGate', name: 'FortiGate 7.4 Administrator', issuer: 'Fortinet', year: '2025', lv: 'admin', top: true },
+{ g: 'net', code: 'NSE 2', name: 'Network Security Associate', issuer: 'Fortinet', year: '2023', lv: 'associate' },
+{ g: 'net', code: 'NSE', name: 'Information Security Awareness', issuer: 'Fortinet', year: '2023', lv: 'fund' },
+{ g: 'net', code: 'SD-WAN', name: 'Aruba Accredited SD-WAN Expert', issuer: 'HPE Aruba', year: '2024', lv: 'expert' },
+{ g: 'net', code: 'SD-WAN', name: 'Aruba Accredited SD-WAN Professional', issuer: 'HPE Aruba', year: '2024', lv: 'prof' },
+{ g: 'net', code: 'SSE', name: 'Security Service Edge Product Specialist', issuer: 'HPE Aruba', year: '2024', lv: 'specialty' },
+{ g: 'net', code: 'CER', name: 'FY24 CER Certification, Adventurer Tier', issuer: 'SonicWall', year: '2023', lv: 'partner' },
+{ g: 'net', code: 'FCP', name: 'Furukawa Certified Professional', issuer: 'Senac', year: '2018', lv: 'prof' },
+{ g: 'end', code: 'KSC', name: 'Security Center for Managed Services Providers', issuer: 'Kaspersky', year: '2023', lv: 'prof' },
+{ g: 'end', code: 'KSC', name: 'Security Center: Systems Management', issuer: 'Kaspersky', year: '2023', lv: 'prof' },
+{ g: 'end', code: 'KES', name: 'Endpoint Security Cloud', issuer: 'Kaspersky', year: '2023', lv: 'prof' },
+{ g: 'off', code: 'CEH', name: 'Certified Ethical Hacker', issuer: 'EC-Council', year: L('expected in 2027', 'previsto para 2027'), lv: 'progress', top: true },
+{ g: 'off', code: 'SYCP', name: 'Pentest Profissional', issuer: 'Solyd', year: '2021', lv: 'course' },
+{ g: 'off', code: 'Solyd', name: L('Introduction to Hacking and Pentest', 'Introdução ao Hacking e Pentest'), issuer: 'Solyd', year: '2019', lv: 'course' }
+];
+const filterDefs = [
+['top', L('Highlights', 'Destaques'), L('The six that say the most about what I do today.', 'As seis que mais dizem sobre o que faço hoje.')],
+['ms', L('Cloud · Microsoft', 'Cloud · Microsoft'), L('From fundamentals to the Expert level in Azure architecture.', 'Dos fundamentos ao nível Expert em arquitetura Azure.')],
+['net', L('Network and firewall', 'Rede e firewall'), L('Firewalls, SD-WAN and structured cabling, from four vendors.', 'Firewalls, SD-WAN e cabeamento estruturado, de quatro fabricantes.')],
+['end', L('Endpoint', 'Endpoint'), L('Endpoint protection managed for many organisations.', 'Proteção de endpoint gerenciada para várias organizações.')],
+['off', L('Offensive security', 'Segurança ofensiva'), L('Pentest training, with the CEH in progress.', 'Formação em pentest, com o CEH em andamento.')]
+];
+const inFilter = (c, k) => (k === 'top' ? !!c.top : c.g === k);
+const fKey = filterDefs.some((f) => f[0] === filter) ? filter : 'top';
+const maxCount = Math.max.apply(null, filterDefs.map((f) => certData.filter((c) => inFilter(c, f[0])).length));
+const filters = filterDefs.map((f) => {
+const on = f[0] === fKey;
+const count = certData.filter((c) => inFilter(c, f[0])).length;
+return {
+label: f[1], count: count,
+barW: Math.round((count / maxCount) * 72) + 'px',
+bar: on ? '#1e4b6e' : '#cfd3d8',
+pick: () => this.setState({ filter: f[0] }),
+pressed: on ? 'true' : 'false',
+bg: on ? '#f4f2ec' : 'transparent', fg: on ? '#15181d' : '#4b5260', weight: on ? 500 : 400
+};
+});
+const strong = { expert: 1, specialty: 1, admin: 1 };
+const certs = certData.filter((c) => inFilter(c, fKey)).map((c) => ({
+code: c.code, name: c.name, issuer: c.issuer, year: c.year, level: LV[c.lv],
+tagBg: strong[c.lv] ? '#15181d' : (c.lv === 'progress' ? '#fbefe6' : 'transparent'),
+tagFg: strong[c.lv] ? '#fbfaf7' : (c.lv === 'progress' ? '#7a3d14' : '#4b5260'),
+tagBorder: strong[c.lv] ? '#15181d' : (c.lv === 'progress' ? '#e6c3a6' : '#cfd3d8')
+}));
+const certNote = filterDefs.find((f) => f[0] === fKey)[2];
+
+return {
+t: {
+navSystems: L('Layers', 'Camadas'), navPath: L('Path', 'Trajetória'), navCreds: L('Credentials', 'Formação'), navContact: L('Contact', 'Contato'),
+eyebrow: L('Infrastructure & Security Engineer · Santo André, Brazil', 'Engenheiro de Infraestrutura e Segurança · Santo André, Brasil'),
+heroLine: L('I build the layers an organisation runs on, and the ones that watch over it.', 'Construo as camadas sobre as quais uma organização funciona, e as que cuidam dela.'),
+systemsTitle: L('Twelve layers I can build and run', 'Doze camadas que sei construir e sustentar'),
+navLayers: L('Layers', 'Camadas'), navProjects: L('Projects', 'Projetos'),
+solved: L('Problems solved', 'Problemas resolvidos'),
+allLayers: L('All layers', 'Todas as camadas'),
+caseStudy: L('Case study', 'Estudo de caso'),
+confidential: L('Customer names, hostnames, addresses and credentials are not included.', 'Nomes de clientes, hostnames, endereços e credenciais não estão incluídos.'),
+context: L('Context', 'Contexto'),
+flowTitle: L('How it works', 'Como funciona'),
+flowHint: L('Select a part to see what happens there.', 'Selecione uma parte para ver o que acontece nela.'),
+next: L('Next', 'Próxima'),
+proof: L('Backed by:', 'Comprovado por:'),
+layersTitle: L('Every layer of the stack', 'Todas as camadas da pilha'),
+layersHint: L('Twelve areas I have worked in, from the cable to the SOC. Select one.', 'Doze áreas em que já trabalhei, do cabo ao SOC. Selecione uma.'),
+projTitle: L('AI experiments and my own projects', 'Experimentos com IA e projetos próprios'),
+projHint: L('At work and on my own. Some are in use, some ended. Each one left a problem solved.', 'No trabalho e por conta própria. Alguns estão em uso, outros terminaram. Cada um deixou um problema resolvido.'),
+systemsHint: L('What I can take care of inside a company, numbered from the foundation up. Each layer opens a real case, with every name removed.', 'O que consigo assumir dentro de uma empresa, numerado da base para o topo. Cada camada abre um caso real, com todos os nomes removidos.'),
+decisions: L('Decisions', 'Decisões'),
+openCase: L('See a case from this layer', 'Ver um caso desta camada'),
+covers: L('What it covers', 'O que cobre'),
+approach: L('How I work here', 'Como trabalho aqui'),
+repo: L('Repository on GitHub', 'Repositório no GitHub'),
+pathTitle: L('One layer at a time', 'Uma camada por vez'),
+pickedUp: L('Layers picked up here', 'Camadas que entraram aqui'),
+stackSoFar: L('Layers in the stack by then', 'Camadas na pilha até então'),
+about1: L('I design and operate infrastructure and the security around it: Azure and hybrid environments, identity, backup and recovery, monitoring, and security operations.', 'Projeto e opero infraestrutura e a segurança em torno dela: ambientes Azure e híbridos, identidade, backup e recuperação, monitoramento e operações de segurança.'),
+about2: L('I got here one layer at a time, from a repair bench to supervising a NOC/SOC team to designing the systems on this page. Select a period to see what each one added.', 'Cheguei aqui uma camada por vez: da bancada de manutenção à supervisão de uma equipe de NOC/SOC e ao desenho dos sistemas desta página. Selecione um período para ver o que cada um acrescentou.'),
+credsTitle: L('Certifications and education', 'Certificações e formação'),
+credsHint: L('Twenty in total. Start with the highlights, or pick an area.', 'Vinte no total. Comece pelos destaques, ou escolha uma área.'),
+eduLabel: L('Education', 'Formação acadêmica'),
+eduName: L('Technologist degree in IT Management', 'Tecnólogo em Gestão da Tecnologia da Informação'),
+langLabel: L('Languages', 'Idiomas'),
+contactLine: L('Open to conversations.', 'Aberto a contatos.'),
+contactSub: L('Santo André, Brazil · UTC−3 · Portuguese and English', 'Santo André, Brasil · UTC−3 · português e inglês')
+},
+layers: all,
+stackH: ((all.length - 1) * 50 + 112) + 'px',
+sel: selObj,
+nextSel: nextObj,
+isHome: view === 'home',
+isCase: view === 'case',
+stages: stages,
+stage: stages[Math.min(stageIdx, stages.length - 1)],
+openCase: () => { this.setState({ view: 'case', stage: 0 }); toTop(); },
+goHome: () => { this.setState({ view: 'home' }); toTop(); },
+nextCase: () => { this.setState({ picked: nextObj.id, stage: 0 }); toTop(); },
+roles: roles,
+role: roles[roleIdx],
+ticks: ticks,
+areas: areas,
+area: areas[areaIdx],
+ventures: ventures,
+venture: ventures[venIdx],
+filters: filters,
+certs: certs,
+certNote: certNote,
+langs: [
+{ name: L('Portuguese', 'Português'), level: L('Native', 'Nativo') },
+{ name: L('English', 'Inglês'), level: L('Professional working proficiency', 'Intermediário superior') },
+{ name: L('Spanish', 'Espanhol'), level: L('Basic', 'Básico') }
+],
+setEn: () => this.setState({ lang: 'en' }),
+setPt: () => this.setState({ lang: 'pt' }),
+enColor: en ? '#15181d' : '#6b7380', enWeight: en ? 500 : 400,
+ptColor: en ? '#6b7380' : '#15181d', ptWeight: en ? 400 : 500
+};
+}
+}
+</script>
+</body>
+</html>
